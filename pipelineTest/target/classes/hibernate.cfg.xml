@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+       "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+       "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!-- The root tag of a hibernate configuration file -->
+<hibernate-configuration>
+	<session-factory>
+	<property name="hibernate.connection.driver.class">org.postgresql.Driver</property>
+	<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+	
+	
+	
+	<property name="hibernate.connection.pool_size">5</property>
+	<property name="show_sql">true</property>
+	<property name="hibernate.current_session_context_class">thread</property>
+	
+	
+	<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+	<property name="hibernate.cache.use_second_level_cache">true</property>
+
+	<property name="hibernate.hbm2ddl.auto">validate</property>
+	
+	
+	</session-factory>
+</hibernate-configuration>
