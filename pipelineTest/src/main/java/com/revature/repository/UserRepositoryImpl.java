@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.revature.model.User;
 import com.revature.util.SessionFactory;
 
-@Repository("ur")
+@Repository("ur2")
 public class UserRepositoryImpl implements UserRepository {
 
 	@Override

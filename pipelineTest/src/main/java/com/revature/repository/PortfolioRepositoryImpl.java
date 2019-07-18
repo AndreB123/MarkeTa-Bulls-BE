@@ -13,7 +13,7 @@ import com.revature.util.SessionFactory;
 
 
 
-@Repository("pr")
+@Repository("pr2")
 public class PortfolioRepositoryImpl implements PortfolioRepository {
 
 	public List<Portfolio> getAllPortfolios() {

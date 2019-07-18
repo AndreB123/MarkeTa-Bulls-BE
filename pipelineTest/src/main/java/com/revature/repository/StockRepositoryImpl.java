@@ -11,7 +11,7 @@ import com.revature.model.Stock;
 import com.revature.util.SessionFactory;
 
 
-@Repository("sr")
+@Repository("sr2")
 public class StockRepositoryImpl implements StockRepository {
 
 	@Override
