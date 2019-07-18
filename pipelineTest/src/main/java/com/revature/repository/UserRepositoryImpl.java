@@ -1,5 +1,17 @@
 package com.revature.repository;
 
-public class UserRepositoryImpl {
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.revature.model.User;
+
+@Repository("ur")
+public class UserRepositoryImpl implements UserRepository {
+
+	@Override
+	public List<User> getAllUsers() {
+		return null;
+	}
 
 }

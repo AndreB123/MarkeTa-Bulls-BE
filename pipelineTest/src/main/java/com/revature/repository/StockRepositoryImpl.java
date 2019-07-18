@@ -1,5 +1,17 @@
 package com.revature.repository;
 
-public class StockRepositoryImpl implements StockRepository{
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.revature.model.Stock;
+
+@Repository("sr")
+public class StockRepositoryImpl implements StockRepository {
+
+	@Override
+	public List<Stock> getAllStocks() {
+		return null;
+	}
 
 }
