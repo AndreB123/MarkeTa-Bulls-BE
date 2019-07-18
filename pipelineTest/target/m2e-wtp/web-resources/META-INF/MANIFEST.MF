@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: doaak
-=======
-Built-By: OldNo.7
->>>>>>> 701842fb8fd3132107a1ac331cfb74c2f76ba0f2
 Build-Jdk: 1.8.0_211
 Created-By: Maven Integration for Eclipse
 
