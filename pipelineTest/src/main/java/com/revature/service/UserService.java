@@ -1,5 +1,10 @@
 package com.revature.service;
 
-public interface UserService {
+import java.util.List;
 
+import com.revature.model.User;
+import com.revature.repository.UserRepository;
+
+public interface UserService {
+	public List<User> getAllUsers();
 }
