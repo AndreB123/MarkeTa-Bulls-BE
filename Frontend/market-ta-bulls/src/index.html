@@ -3,22 +3,31 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Market ta-Bulls</title>
+  <title>MarkeTa-Bulls</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header class="jumbotron jumbotron-fluid bg-dark text-light mb-0 pb-4">
-    <div class="text-center">
-
-      <h1>Market ta-Bulls</h1>
-      <p class="lead">The revolutionary investment portfolio manager</p>
-    </div>
-  </header
-  <app-root></app-root>
+  <app-root></app-root><br><br>
+  <div class="container-fluid text-light">
+    <form action="/MarkeTa-Bulls/login" method="POST" id="form1" class="needs-validation" novalidate>
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <label for="Username">Username</label>
+          <input name="Username" class="form-control" type="text" placeholder="Username" required>
+          <label for="password">Password</label>
+          <input name="password" class="form-control" type="password" placeholder="Password" required>
+          <br>
+          <button class="btn form-control bg-dark text-light" id="submitform">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </body>
 
 </html>
