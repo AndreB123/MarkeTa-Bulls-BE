@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="stock", schema="StockProj")
+@Table(name="stocktable", schema="StockProj")
 public class Stock {
 
 	@Id

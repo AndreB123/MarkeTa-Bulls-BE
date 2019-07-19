@@ -17,20 +17,19 @@ public class User {
 	private String username;
 	@Column(name="userpassword")
 	private String password;
-	@Column(name="balance")
+	@Column(name="initbalance")
 	private Double balance;
-	@OneToMany(mappedBy = "username")
-	private List<Portfolio> portfolios;
+//	@OneToMany(mappedBy = "username")
+//	private List<Portfolio> portfolios;
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(String username, String password, Double balance, List<Portfolio> portfolios) {
+	public User(String username, String password, Double balance) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.balance = balance;
-		this.portfolios = portfolios;
 	}
 	public String getUsername() {
 		return username;
@@ -50,19 +49,12 @@ public class User {
 	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
-	public List<Portfolio> getPortfolios() {
-		return portfolios;
-	}
-	public void setPortfolios(List<Portfolio> portfolios) {
-		this.portfolios = portfolios;
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((balance == null) ? 0 : balance.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((portfolios == null) ? 0 : portfolios.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -85,11 +77,6 @@ public class User {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (portfolios == null) {
-			if (other.portfolios != null)
-				return false;
-		} else if (!portfolios.equals(other.portfolios))
-			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -99,8 +86,8 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", balance=" + balance + ", portfolios="
-				+ portfolios + "]";
+		return "User [username=" + username + ", password=" + password + ", balance=" + balance + "]";
 	}
+	
 
 }
