@@ -6,5 +6,5 @@ import com.revature.model.User;
 import com.revature.repository.UserRepository;
 
 public interface UserService {
-	public List<User> getAllUsers();
+	public User getUserByUsername(String username);
 }

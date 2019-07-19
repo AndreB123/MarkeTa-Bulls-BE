@@ -1,7 +1,5 @@
 package com.revature.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,17 +10,17 @@ import com.revature.repository.UserRepositoryImpl;
 @Service("us")
 public class UserServiceImpl implements UserService{
 
-	private UserRepository ur;
+	private UserRepository ur2;
 	
 	@Autowired
-	public UserServiceImpl(UserRepositoryImpl ur) {this.ur = ur;}
+	public UserServiceImpl(UserRepositoryImpl ur) {this.ur2 = ur;}
 	
 	public void setUr(UserRepository ur) {
-		this.ur = ur;
+		this.ur2 = ur2;
 	}
 
-	public List<User> getAllUsers() {
+	public User getUserByUsername(String username) {
 		// TODO Auto-generated method stub
-		return ur.getAllUsers();
+		return ur2.getUserByUsername(username);
 	}
 }
