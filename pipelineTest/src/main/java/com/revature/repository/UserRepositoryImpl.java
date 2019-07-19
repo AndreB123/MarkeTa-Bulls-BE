@@ -40,6 +40,8 @@ public class UserRepositoryImpl implements UserRepository {
 		} finally {
 			s.close();
 		}
+		
+		System.out.println(u);
 
 		return u;
 	}
