@@ -1,21 +1,19 @@
 package com.revature.web;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.model.User;
 import com.revature.service.UserService;
 
 @RestController
-@RequestMapping(path="/Market_ta-Bulls")
+@RequestMapping(path="/MarkeTa-Bulls")
 public class MarketTaBullControllerImpl implements MarketTaBullController{
 
 	private UserService us;
@@ -26,10 +24,12 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 	}
 	
 	@Override
-	@GetMapping(value="/user/{username}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/login", produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public User getUserByUsername(@PathVariable String username) {
-		return us.getUserByUsername(username);
+	public void isValidUser(HttpServletRequest req, HttpServletResponse resp) {
+		us.isValidUser(req, resp);
+		
+		return;
 	}
 
 }
