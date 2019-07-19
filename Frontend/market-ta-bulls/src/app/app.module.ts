@@ -10,6 +10,7 @@ import { HeaderComponent } from './component/header/header.component';
 import { PortfolioComponent } from './component/portfolio/portfolio.component';
 import { StockpickerComponent } from './component/stockpicker/stockpicker.component';
 import { SettingComponent } from './component/setting/setting.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SettingComponent } from './component/setting/setting.component';
     HeaderComponent,
     PortfolioComponent,
     StockpickerComponent,
-    SettingComponent
+    SettingComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
