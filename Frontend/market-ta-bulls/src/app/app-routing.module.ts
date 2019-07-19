@@ -4,6 +4,7 @@ import { PortfolioComponent } from './component/portfolio/portfolio.component';
 import { Routes, RouterModule } from '@angular/router';
 import { StockpickerComponent } from './component/stockpicker/stockpicker.component';
 import { SettingComponent } from './component/setting/setting.component';
+import { LoginComponent } from './component/login/login.component';
 
 const routes: Routes = [{
   component: PortfolioComponent,
@@ -11,7 +12,9 @@ const routes: Routes = [{
   component: StockpickerComponent,
   path: "stockpicker"},{
   component: SettingComponent,
-  path: "setting"
+  path: "setting"},{
+  component:LoginComponent,
+  path: ""
 }];
 
 @NgModule({

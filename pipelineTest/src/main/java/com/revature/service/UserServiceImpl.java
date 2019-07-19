@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	public boolean isValidUser(HttpServletRequest req, HttpServletResponse resp) {
-		final String username = req.getParameter("youremail");
+		final String username = req.getParameter("Username");
 		final String password = req.getParameter("password");
 		System.out.println(username);
 		
