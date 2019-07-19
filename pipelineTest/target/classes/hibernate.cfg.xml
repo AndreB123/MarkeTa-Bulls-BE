@@ -8,20 +8,13 @@
 	<session-factory>
 	<property name="hibernate.connection.driver.class">org.postgresql.Driver</property>
 	<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-
-	
-	
-	
 	<property name="hibernate.connection.pool_size">5</property>
 	<property name="show_sql">true</property>
 	<property name="hibernate.current_session_context_class">thread</property>
-	
-	
 	<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
 	<property name="hibernate.cache.use_second_level_cache">true</property>
-
 	<property name="hibernate.hbm2ddl.auto">validate</property>
 	
-	
+	<mapping class="com.revature.model.User"/>
 	</session-factory>
 </hibernate-configuration>

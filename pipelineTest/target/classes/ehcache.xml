@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Optional EHCACHE Configuration -->
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true" maxBytesLocalHeap="10M"
+       monitoring="autodetect" dynamicConfig="true">
+
+	<diskStore path="java.io.tmpdir/ehcache"/>
+	
+	<defaultCache eternal="false" timToIdleSeconds="120" timeToLiveSeconds="120" diskSpoolBifferSizeMB="30"
+	diskExpiryThreadIntervalSeconds="120" memoryStorEvictionPolicy="LRU" statistics="true"></defaultCache>
+	<cache name="type" eternal="false" timeToIdleSeconds="30" timeToLiveSeconds="30"></cache>     
+       
+</ehcache>
