@@ -10,7 +10,8 @@ import { HeaderComponent } from './component/header/header.component';
 import { PortfolioComponent } from './component/portfolio/portfolio.component';
 import { StockpickerComponent } from './component/stockpicker/stockpicker.component';
 import { SettingComponent } from './component/setting/setting.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './component/login/login.component';
+import { LogincheckComponent } from './logincheck/logincheck.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     PortfolioComponent,
     StockpickerComponent,
     SettingComponent,
-    LoginComponent
+    LoginComponent,
+    LogincheckComponent
   ],
   imports: [
     BrowserModule,

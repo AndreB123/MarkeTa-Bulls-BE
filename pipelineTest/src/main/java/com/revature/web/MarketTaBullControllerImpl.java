@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +24,7 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 	}
 	
 	@Override
-	@GetMapping(value="/login", produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="/login", produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public void isValidUser(HttpServletRequest req, HttpServletResponse resp) {
 		us.isValidUser(req, resp);
