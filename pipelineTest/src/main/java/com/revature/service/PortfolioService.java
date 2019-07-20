@@ -1,5 +1,9 @@
 package com.revature.service;
 
-public interface PortfolioService {
+import java.util.List;
 
+import com.revature.model.Portfolio;
+
+public interface PortfolioService {
+	List<Portfolio> getAllPortfolios(String username);
 }

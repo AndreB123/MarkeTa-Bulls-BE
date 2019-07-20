@@ -16,5 +16,6 @@
 	<property name="hibernate.hbm2ddl.auto">validate</property>
 	
 	<mapping class="com.revature.model.User"/>
+	<mapping class="com.revature.model.Portfolio"/>
 	</session-factory>
 </hibernate-configuration>

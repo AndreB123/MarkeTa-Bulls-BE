@@ -6,20 +6,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="portfolio", schema="StockProj")
+@Table(name="portfolio", schema="\"StockProj\"")
 public class Portfolio {
 	@Id
-	@Column(name="id")
+	@Column(name="portfolioId")
 	private int id;
-	@Column(name="initBalance")
-	private int initBalance;
-	@Column(name="username")
+	@Column(name="stockprice")
+	private double initBalance;
+	@Column(name="portusername")
 	private String username;
 	public Portfolio() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Portfolio(int id, int initBalance, String username) {
+	public Portfolio(int id, double initBalance, String username) {
 		super();
 		this.id = id;
 		this.initBalance = initBalance;
@@ -31,10 +31,10 @@ public class Portfolio {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getInitBalance() {
+	public double getInitBalance() {
 		return initBalance;
 	}
-	public void setInitBalance(int initBalance) {
+	public void setInitBalance(double initBalance) {
 		this.initBalance = initBalance;
 	}
 	public String getUsername() {
@@ -48,7 +48,9 @@ public class Portfolio {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + initBalance;
+		long temp;
+		temp = Double.doubleToLongBits(initBalance);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -63,7 +65,7 @@ public class Portfolio {
 		Portfolio other = (Portfolio) obj;
 		if (id != other.id)
 			return false;
-		if (initBalance != other.initBalance)
+		if (Double.doubleToLongBits(initBalance) != Double.doubleToLongBits(other.initBalance))
 			return false;
 		if (username == null) {
 			if (other.username != null)
@@ -76,6 +78,5 @@ public class Portfolio {
 	public String toString() {
 		return "Portfolio [id=" + id + ", initBalance=" + initBalance + ", username=" + username + "]";
 	}
-	
 	
 }
