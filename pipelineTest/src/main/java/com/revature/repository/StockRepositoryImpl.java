@@ -10,27 +10,10 @@ import org.springframework.stereotype.Repository;
 import com.revature.model.Stock;
 import com.revature.util.SessionFactory;
 
-
 @Repository("sr2")
 public class StockRepositoryImpl implements StockRepository {
 
-	@Override
-	public List<Stock> getAllStocks() {
-		List<Stock> stock = new ArrayList<>();
-		Session s = null;
 
-		try {
-			s = SessionFactory.getSession();
-			stock = s.createQuery("FROM Stock", Stock.class).getResultList();
-
-		} catch (HibernateException e) {
-			e.printStackTrace();
-
-		} finally {
-			s.close();
-		}
-		return stock;
-	}
 
 	@Override
 	public Stock getStockById(int id) {
@@ -48,5 +31,23 @@ public class StockRepositoryImpl implements StockRepository {
 			s.close();
 		}
 		return x;
+	}
+
+	@Override
+	public List<Stock> getAllStocks(int id) {
+		List<Stock> stock = new ArrayList<>();
+		Session s = null;
+
+		try {
+			s = SessionFactory.getSession();
+			stock = s.createNativeQuery("SELECT * FROM \"StockProj\".stockpage left join \"StockProj\".stocktable ON stockpageId=stockId WHERE stockportfolioId = "+id, Stock.class).getResultList();
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+
+		} finally {
+			s.close();
+		}
+		return stock;
 	}
 }
