@@ -45,6 +45,25 @@ public class UserRepositoryImpl implements UserRepository {
 
 		return u;
 	}
+	
+	@Override
+	public void newUser(User u) {
+		Session s = null;
+		Transaction tx = null;
+
+		try {
+			s = SessionFactory.getSession();
+			tx = s.beginTransaction();
+			s.save(u);
+			tx.commit();
+		}catch(HibernateException ex) {
+			ex.printStackTrace();
+		}finally {
+			s.close();
+		}
+		
+		return;
+	}
 
 }
 

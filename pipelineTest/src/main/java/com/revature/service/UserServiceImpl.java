@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	public boolean isValidUser(HttpServletRequest req, HttpServletResponse resp) {
-		final String username = req.getParameter("Username");
+		final String username = req.getParameter("username");
 		final String password = req.getParameter("password");
 		System.out.println(username);
 		
@@ -43,5 +43,12 @@ public class UserServiceImpl implements UserService{
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public void newUser(HttpServletRequest req, HttpServletResponse resp) {
+		User newUser = new User(req.getParameter("username"), req.getParameter("password"), 0.0);
+		new UserRepositoryImpl().newUser(newUser);
+		return;
 	}
 }
