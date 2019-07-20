@@ -27,7 +27,7 @@ public class PortfolioRepositoryImpl implements PortfolioRepository {
 	} catch (HibernateException e) {
 		e.printStackTrace();
 	} finally {
-		s.clear();
+		s.close();
 	}
 	return portfolio;
 	}
