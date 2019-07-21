@@ -5,6 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/*
+ * Stock class using Java Bean design pattern. Tables are mapped with annotations
+ * within the class. 
+ */
+
 @Entity
 @Table(name="stocktable", schema="\"StockProj\"")
 public class Stock {

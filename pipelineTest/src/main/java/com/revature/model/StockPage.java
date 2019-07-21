@@ -1,5 +1,11 @@
 package com.revature.model;
 
+
+/*
+ * StockPage class using Java Bean design pattern. Tables are mapped with annotations
+ * within the class. This is the join table class. 
+ */
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

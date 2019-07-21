@@ -31,7 +31,8 @@ public class StockServiceImpl implements StockService {
 		HttpSession s = req.getSession(false);
 		int portfolioId = (int)s.getAttribute("portfolioid");
 		System.out.println("service " + portfolioId);
-		return sr2.getAllStocks(portfolioId);
+		sr2.getAllStocks(portfolioId);
+		return null;
 	}
 
 	@Override
@@ -40,3 +41,4 @@ public class StockServiceImpl implements StockService {
 	}
 
 }
+
