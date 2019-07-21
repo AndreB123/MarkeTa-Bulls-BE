@@ -41,4 +41,6 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 		return;
 	}
 
+	
+	
 }
