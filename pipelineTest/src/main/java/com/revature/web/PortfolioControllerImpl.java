@@ -38,7 +38,8 @@ public class PortfolioControllerImpl implements PortfolioController{
 	@Override
 	@RequestMapping(value="/APortfolio", method=RequestMethod.GET)
 	public Portfolio getPortfolioById(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
+		HttpSession s = req.getSession(false);
+		s.setAttribute("portfolioid", 1);
 		return null;
 	}
 

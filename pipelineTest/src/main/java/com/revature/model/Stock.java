@@ -6,15 +6,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="stocktable", schema="StockProj")
+@Table(name="stocktable", schema="\"StockProj\"")
 public class Stock {
 
 	@Id
-	@Column(name="id")
+	@Column(name="stockid")
 	private int id;
 	@Column(name="purchaseprice")
 	private double purchaseprice;
-	@Column(name="symbol")
+
+	@Column(name="stocksym")
+
 	private String symbol;
 	public Stock() {
 		super();
@@ -79,4 +81,7 @@ public class Stock {
 	public String toString() {
 		return "Stock [id=" + id + ", purchaseprice=" + purchaseprice + ", symbol=" + symbol + "]";
 	}
+
+	
 }
+
