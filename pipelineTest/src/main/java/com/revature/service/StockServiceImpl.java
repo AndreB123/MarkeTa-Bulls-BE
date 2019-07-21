@@ -11,23 +11,32 @@ import org.springframework.stereotype.Service;
 
 import com.revature.model.Stock;
 import com.revature.repository.StockRepository;
-import com.revature.repository.StockRepositoryImpl;
 
 @Service("ss")
 public class StockServiceImpl implements StockService {
 
-	private StockRepositoryImpl sr2;
+	private StockRepository sr2;
 
 	@Autowired
 	public StockServiceImpl(StockRepository sr) {
+		this.sr2 = sr;
+	}
+	
+	public void setSr(StockRepository sr) {
 		this.sr2 = sr2;
 	}
 
 	@Override
 	public List<Stock> getAllStocks(HttpServletRequest req, HttpServletResponse resp) {
 		HttpSession s = req.getSession(false);
-		int portfolioId = Integer.parseInt((String)s.getAttribute("portfolioid"));
-		return new StockRepositoryImpl().getAllStocks(portfolioId);
+		int portfolioId = (int)s.getAttribute("portfolioid");
+		System.out.println("service " + portfolioId);
+		return sr2.getAllStocks(portfolioId);
+	}
+
+	@Override
+	public Stock getStockById(HttpServletRequest req, HttpServletResponse resp) {
+		return sr2.getStockById(1);
 	}
 
 }

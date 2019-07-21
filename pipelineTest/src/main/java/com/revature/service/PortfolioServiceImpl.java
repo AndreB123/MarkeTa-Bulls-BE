@@ -23,6 +23,11 @@ public class PortfolioServiceImpl implements PortfolioService{
 
 	@Override
 	public List<Portfolio> getAllPortfolios(String username) {
-		return new PortfolioRepositoryImpl().getAllPortfolios(username);
+		return pr2.getAllPortfolios(username);
+	}
+
+	@Override
+	public Portfolio getPortfolioById(int id) {
+		return pr2.getPortfolioById(id);
 	}
 }

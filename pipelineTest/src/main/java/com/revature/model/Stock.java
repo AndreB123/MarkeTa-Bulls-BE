@@ -6,21 +6,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="stocktable", schema="StockProj")
+@Table(name="stocktable", schema="\"StockProj\"")
 public class Stock {
 
 	@Id
-	@Column(name="id")
+	@Column(name="stockid")
 	private int id;
 	@Column(name="purchaseprice")
-	private float purchaseprice;
-	@Column(name="symbol")
+	private double purchaseprice;
+	@Column(name="stocksym")
 	private String symbol;
 	public Stock() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Stock(int id, float purchaseprice, String symbol) {
+	public Stock(int id, double purchaseprice, String symbol) {
 		super();
 		this.id = id;
 		this.purchaseprice = purchaseprice;
@@ -32,10 +32,10 @@ public class Stock {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public float getPurchaseprice() {
+	public double getPurchaseprice() {
 		return purchaseprice;
 	}
-	public void setPurchaseprice(float purchaseprice) {
+	public void setPurchaseprice(double purchaseprice) {
 		this.purchaseprice = purchaseprice;
 	}
 	public String getSymbol() {
@@ -49,7 +49,9 @@ public class Stock {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + Float.floatToIntBits(purchaseprice);
+		long temp;
+		temp = Double.doubleToLongBits(purchaseprice);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((symbol == null) ? 0 : symbol.hashCode());
 		return result;
 	}
@@ -64,7 +66,7 @@ public class Stock {
 		Stock other = (Stock) obj;
 		if (id != other.id)
 			return false;
-		if (Float.floatToIntBits(purchaseprice) != Float.floatToIntBits(other.purchaseprice))
+		if (Double.doubleToLongBits(purchaseprice) != Double.doubleToLongBits(other.purchaseprice))
 			return false;
 		if (symbol == null) {
 			if (other.symbol != null)
@@ -77,4 +79,5 @@ public class Stock {
 	public String toString() {
 		return "Stock [id=" + id + ", purchaseprice=" + purchaseprice + ", symbol=" + symbol + "]";
 	}
+	
 }

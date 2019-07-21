@@ -17,5 +17,6 @@
 	
 	<mapping class="com.revature.model.User"/>
 	<mapping class="com.revature.model.Portfolio"/>
+	<mapping class="com.revature.model.Stock"/>
 	</session-factory>
 </hibernate-configuration>
