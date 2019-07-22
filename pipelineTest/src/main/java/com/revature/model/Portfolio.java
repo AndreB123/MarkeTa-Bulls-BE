@@ -1,5 +1,9 @@
 package com.revature.model;
 
+/*
+ * Portfolio class using Java Bean design pattern. Tables are mapped with annotations
+ * within the class. 
+ */
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -11,7 +11,9 @@ import org.springframework.stereotype.Repository;
 import com.revature.model.Portfolio;
 import com.revature.util.SessionFactory;
 
-
+/*
+ * Implemented methods from declared methods within PortfolioRepository. 
+ */
 
 @Repository("pr2")
 public class PortfolioRepositoryImpl implements PortfolioRepository {

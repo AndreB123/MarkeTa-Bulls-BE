@@ -7,7 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import com.revature.model.Portfolio;
 
-
+/*
+ * The PortfolioRepository listing the methods that will be implemented in the 
+ * PortfolioRepository will implement. 
+ */
 
 @Repository("pr")
 public interface PortfolioRepository {
