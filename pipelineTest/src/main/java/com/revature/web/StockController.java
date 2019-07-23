@@ -10,4 +10,5 @@ import com.revature.model.Stock;
 public interface StockController {
 	public List<Stock> getAllStocks(HttpServletRequest req, HttpServletResponse resp);
 	public Stock getStockById(HttpServletRequest req, HttpServletResponse resp);
+	public void addStock(HttpServletRequest req, HttpServletResponse resp);
 }

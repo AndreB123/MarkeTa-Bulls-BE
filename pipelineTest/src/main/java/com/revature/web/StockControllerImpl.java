@@ -40,4 +40,11 @@ public class StockControllerImpl implements StockController {
 		return null;
 	}
 
+	@Override
+	@RequestMapping(value = "/stock/add", method = RequestMethod.POST)
+	public void addStock(HttpServletRequest req, HttpServletResponse resp) {
+		System.out.println("stock controller method add");
+		return;
+	}
+
 }

@@ -19,8 +19,6 @@ public class User {
 	private String password;
 	@Column(name="initbalance")
 	private Double balance;
-//	@OneToMany(mappedBy = "username")
-//	private List<Portfolio> portfolios;
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -88,6 +86,6 @@ public class User {
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", balance=" + balance + "]";
 	}
-	
+
 
 }
