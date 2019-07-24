@@ -65,6 +65,12 @@ public class StockServiceImpl implements StockService {
 		return sr2.removeStock(stockId);
 	}
 
+	@Override
+	public Stock getStockById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

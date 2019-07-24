@@ -70,5 +70,6 @@ public class StockControllerImpl implements StockController {
 		return null;
 	}
 
+
 }
 
