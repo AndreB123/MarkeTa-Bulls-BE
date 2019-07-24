@@ -1,6 +1,7 @@
 package com.revature.repository;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -13,8 +14,6 @@ import com.revature.util.SessionFactory;
 
 @Repository("sr2")
 public class StockRepositoryImpl implements StockRepository {
-
-
 
 	@Override
 	public Stock getStockById(int id) {
@@ -43,12 +42,14 @@ public class StockRepositoryImpl implements StockRepository {
 		List<Stock> stock = new ArrayList<>();
 		Session s = null;
 		Transaction tx = null;
+
 		System.out.println("hit");
 
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			stock = s.createNativeQuery("SELECT * FROM \"StockProj\".stockpage left join \"StockProj\".stocktable ON stockpageId=stockId WHERE stockportfolioId = "+id, Stock.class).getResultList();
+			stock = s.createNativeQuery("SELECT * FROM \"StockProj\".portfolio left join \"StockProj\".stocktable ON portId=portfolioId", Stock.class).getResultList();
+
 			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -59,4 +60,72 @@ public class StockRepositoryImpl implements StockRepository {
 		}
 		return stock;
 	}
+
+	@Override
+	public Stock updateStock(int id, int amount) {
+		Stock x = null;
+		Session s = null;
+		Transaction tx = null;
+
+		System.out.println("hit");
+
+		try {
+			s = SessionFactory.getSession();
+			tx = s.beginTransaction();
+			x = (Stock) s.createNativeQuery("UPDATE stocktable set amount= ?"+ amount + " where portId=portfolioId", Stock.class).getResultList();
+
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+
+		} finally {
+			s.close();
+		}
+		return x;
+	}
+
+	@Override
+	public Stock insertStock(int id, int amount) {
+		Stock x = null;
+		Session s = null;
+		Transaction tx = null;
+
+		try {
+			s = SessionFactory.getSession();
+			tx = s.beginTransaction();
+			x = (Stock) s.createNativeQuery("INSERT INTO stocktable values (?,?,?,?)", Stock.class).getResultList();
+
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+
+		} finally {
+			s.close();
+		}
+		return x;
+	}
+
+	@Override
+	public Stock removeStock(int id) {
+		Stock x = null;
+		Session s = null;
+		Transaction tx = null;
+		try {
+			s = SessionFactory.getSession();
+			tx = s.beginTransaction();
+			x = (Stock) s.createNativeQuery("DELETE FROM stocktable WHERE stockID=?", Stock.class).getResultList();
+
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+
+		} finally {
+			s.close();
+		}
+		return x;
+	}	
+
 }

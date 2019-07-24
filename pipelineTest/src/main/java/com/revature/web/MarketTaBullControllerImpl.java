@@ -46,4 +46,11 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 		return;
 	}
 
+	@Override
+	@RequestMapping(value="/getAllUsers", method=RequestMethod.GET)
+	public void getAllUsers(HttpServletRequest req, HttpServletResponse resp) {
+		System.out.println("controller get all users method");
+		us.getAllUsers(req, resp);
+		return;		
+	}	
 }

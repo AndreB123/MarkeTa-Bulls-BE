@@ -18,44 +18,42 @@ import com.revature.model.Portfolio;
 import com.revature.service.PortfolioService;
 
 @RestController
-@RequestMapping(path="/MarkeTa-Bulls")
-public class PortfolioControllerImpl implements PortfolioController{
+@RequestMapping(path = "/MarkeTa-Bulls")
+public class PortfolioControllerImpl implements PortfolioController {
 
 	private PortfolioService ps;
-	
+
 	@Autowired
 	public void setPs(PortfolioService ps) {
 		this.ps = ps;
 	}
-	
+
 	@Override
-	@RequestMapping(value="/Portfolios", method=RequestMethod.GET)
+	@RequestMapping(value = "/Portfolios", method = RequestMethod.GET)
 	@CrossOrigin(origins = "http://localhost:4200")
-	public String getAllPortfolios(@RequestParam(name="Username") String username) {
+	public String getAllPortfolios(@RequestParam(name = "portfolioId") String username) {
 		System.out.println(username);
-		String Re = "{ \"portfolios\": [";
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			List<Portfolio> li = ps.getAllPortfolios(username);
-			for(int i = 0; i < li.size(); i++) {
-				Re += mapper.writeValueAsString(li.get(i));
-				if(i != li.size()-1)
-					Re += ",";
-			}
-			Re += "]}";
-			System.out.println(Re);
-			return Re;
-		}catch (Exception ex){
+			return mapper.writeValueAsString(ps.getAllPortfolios(username));
+		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return null;
+		return "Portfolio Request Failed";
 	}
 
 	@Override
-	@RequestMapping(value="/APortfolio", method=RequestMethod.GET)
+	@RequestMapping(value = "/APortfolio", method = RequestMethod.GET)
 	public Portfolio getPortfolioById(HttpServletRequest req, HttpServletResponse resp) {
 		HttpSession s = req.getSession(false);
-		s.setAttribute("portfolioid", 1);
+		s.setAttribute("portfolioId", 1);
+		return null;
+	}
+
+	@RequestMapping(value = "/insertPortfolio", method = RequestMethod.POST)
+	public Portfolio insertPortfolio(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession s = req.getSession(false);
+		s.setAttribute("portfolioId", 1);
 		return null;
 	}
 

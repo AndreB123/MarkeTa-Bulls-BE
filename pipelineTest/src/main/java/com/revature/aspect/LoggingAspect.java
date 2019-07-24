@@ -1,5 +1,9 @@
 package com.revature.aspect;
 
+/*
+ * LoggingAspect is just to show what methods are being executed so we can keep track of 
+ * how our code is running. 
+ */
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;

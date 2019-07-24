@@ -6,10 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.Stock;
 import com.revature.service.StockService;
 
@@ -34,17 +37,39 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value = "/stock", method = RequestMethod.GET)
-	public Stock getStockById(HttpServletRequest req, HttpServletResponse resp) {
+	@CrossOrigin(origins="http://localhost:4200")
+	public String getStockById(@RequestParam(name="stockId") int id) {
 		System.out.println("stock controller method");
-		ss.getStockById(req, resp);
+		ObjectMapper mapper= new ObjectMapper(); 
+		try {
+			return mapper.writeValueAsString(ss.getStockById(id));
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return "Stock Request Failed";
+	}
+
+	@Override
+	@RequestMapping(value="/updateStock", method = RequestMethod.GET)
+	public Stock updateStock(HttpServletRequest req, HttpServletResponse resp) {
+		ss.updateStock(req, resp);
 		return null;
 	}
 
 	@Override
-	@RequestMapping(value = "/stock/add", method = RequestMethod.POST)
-	public void addStock(HttpServletRequest req, HttpServletResponse resp) {
-		System.out.println("stock controller method add");
-		return;
+	@RequestMapping(value="/insertStock", method = RequestMethod.POST)
+	public Stock insertStock(HttpServletRequest req, HttpServletResponse resp) {
+		ss.insertStock(req, resp);
+		return null;
 	}
 
+	@Override
+	@RequestMapping(value="/removeStock", method =RequestMethod.POST)
+	public Stock removeStock(HttpServletRequest req, HttpServletResponse resp) {
+		ss.removeStock(req, resp);
+		return null;
+	}
+
+
 }
+
