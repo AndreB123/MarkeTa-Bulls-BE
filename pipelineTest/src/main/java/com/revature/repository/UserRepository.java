@@ -8,4 +8,5 @@ import com.revature.model.User;
 @Repository("ur")
 public interface UserRepository {
 	User getUserByUsername(String username);
+	void newUser(User u);
 }

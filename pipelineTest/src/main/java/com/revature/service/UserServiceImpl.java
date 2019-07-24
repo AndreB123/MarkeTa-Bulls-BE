@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,19 +30,24 @@ public class UserServiceImpl implements UserService{
 		return ur2.getUserByUsername(username);
 	}
 	
-	public boolean isValidUser(HttpServletRequest req, HttpServletResponse resp) {
-		final String username = req.getParameter("Username");
-		final String password = req.getParameter("password");
-		System.out.println(username);
+	public User isValidUser(String Username, String password) {
+
+		System.out.println(Username);
+		System.out.println(password);
 		
-		if(username != null && !username.equals("") && password != null && !password.equals("")) {
-			if(ur2.getUserByUsername(username) != null && password.equals(ur2.getUserByUsername(username).getPassword())) {
-				HttpSession s = req.getSession();
-				s.setAttribute("user's name", username);
+		if(Username != null && !Username.equals("") && password != null && !password.equals("")) {
+			if(ur2.getUserByUsername(Username) != null && password.equals(ur2.getUserByUsername(Username).getPassword())) {
 				
-				return true;
+				return ur2.getUserByUsername(Username);
 			}
 		}
-		return false;
+		return null;
+	}
+
+	@Override
+	public void newUser(HttpServletRequest req, HttpServletResponse resp) {
+		User newUser = new User(req.getParameter("username"), req.getParameter("password"), 0.0);
+		new UserRepositoryImpl().newUser(newUser);
+		return;
 	}
 }

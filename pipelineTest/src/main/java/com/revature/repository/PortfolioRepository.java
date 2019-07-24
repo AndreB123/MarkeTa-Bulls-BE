@@ -12,7 +12,7 @@ import com.revature.model.Portfolio;
 @Repository("pr")
 public interface PortfolioRepository {
 
-	List<Portfolio> getAllPortfolios();	
+	List<Portfolio> getAllPortfolios(String username);	
 	Portfolio getPortfolioById(int id);
 	void insertPortfolio(Portfolio p);
 	void deletePortfolio(Portfolio p);

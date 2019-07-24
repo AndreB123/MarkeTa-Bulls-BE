@@ -16,20 +16,25 @@ import com.revature.util.SessionFactory;
 @Repository("pr2")
 public class PortfolioRepositoryImpl implements PortfolioRepository {
 
-	public List<Portfolio> getAllPortfolios() {
-	List<Portfolio> portfolio = new ArrayList<>();
+	public List<Portfolio> getAllPortfolios(String username) {
+	List<Portfolio> portfolios = new ArrayList<>();
 	Session s = null;
+	Transaction tx = null;
 
 	try {
 		s = SessionFactory.getSession();
-		portfolio = s.createQuery("FROM Portfolio", Portfolio.class).getResultList();
-
+		tx = s.beginTransaction();
+		portfolios = s.createNativeQuery("Select * from \"StockProj\".portfolio where portusername = '" + username + "'", Portfolio.class).getResultList();
+		tx.commit();
 	} catch (HibernateException e) {
 		e.printStackTrace();
+		tx.rollback();
 	} finally {
-		s.clear();
+		s.close();
 	}
-	return portfolio;
+	
+	System.out.println(portfolios);
+	return portfolios;
 	}
 
 	@Override
