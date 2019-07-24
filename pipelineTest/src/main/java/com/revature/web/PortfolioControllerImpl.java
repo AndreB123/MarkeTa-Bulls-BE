@@ -7,10 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.Portfolio;
 import com.revature.service.PortfolioService;
 
@@ -27,11 +30,24 @@ public class PortfolioControllerImpl implements PortfolioController{
 	
 	@Override
 	@RequestMapping(value="/Portfolios", method=RequestMethod.GET)
-	public List<Portfolio> getAllPortfolios(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		String username = (String)s.getAttribute("user's name");
+	@CrossOrigin(origins = "http://localhost:4200")
+	public String getAllPortfolios(@RequestParam(name="Username") String username) {
 		System.out.println(username);
-		ps.getAllPortfolios(username);
+		String Re = "{ \"portfolios\": [";
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			List<Portfolio> li = ps.getAllPortfolios(username);
+			for(int i = 0; i < li.size(); i++) {
+				Re += mapper.writeValueAsString(li.get(i));
+				if(i != li.size()-1)
+					Re += ",";
+			}
+			Re += "]}";
+			System.out.println(Re);
+			return Re;
+		}catch (Exception ex){
+			ex.printStackTrace();
+		}
 		return null;
 	}
 

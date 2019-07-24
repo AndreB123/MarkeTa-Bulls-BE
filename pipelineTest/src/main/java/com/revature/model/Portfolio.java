@@ -11,6 +11,8 @@ public class Portfolio {
 	@Id
 	@Column(name="portfolioId")
 	private int id;
+	@Column(name="portName")
+	private String name;
 	@Column(name="stockprice")
 	private double initBalance;
 	@Column(name="portusername")
@@ -19,9 +21,10 @@ public class Portfolio {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Portfolio(int id, double initBalance, String username) {
+	public Portfolio(int id, String name, double initBalance, String username) {
 		super();
 		this.id = id;
+		this.name = name;
 		this.initBalance = initBalance;
 		this.username = username;
 	}
@@ -30,6 +33,12 @@ public class Portfolio {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public double getInitBalance() {
 		return initBalance;
@@ -51,6 +60,7 @@ public class Portfolio {
 		long temp;
 		temp = Double.doubleToLongBits(initBalance);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -67,6 +77,11 @@ public class Portfolio {
 			return false;
 		if (Double.doubleToLongBits(initBalance) != Double.doubleToLongBits(other.initBalance))
 			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -76,7 +91,8 @@ public class Portfolio {
 	}
 	@Override
 	public String toString() {
-		return "Portfolio [id=" + id + ", initBalance=" + initBalance + ", username=" + username + "]";
+		return "Portfolio [id=" + id + ", name=" + name + ", initBalance=" + initBalance + ", username=" + username
+				+ "]";
 	}
 	
 }
