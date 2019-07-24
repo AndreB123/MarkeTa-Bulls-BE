@@ -65,5 +65,7 @@ public class StockServiceImpl implements StockService {
 		return sr2.removeStock(stockId);
 	}
 
+	
+
 }
 
