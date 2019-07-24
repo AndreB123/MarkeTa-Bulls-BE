@@ -13,5 +13,8 @@ public interface StockService {
 
 	List<Stock> getAllStocks(HttpServletRequest req, HttpServletResponse resp);
 	Stock getStockById(HttpServletRequest req, HttpServletResponse resp);
+	public Stock updateStock(HttpServletRequest req, HttpServletResponse resp);
+	public Stock insertStock(HttpServletRequest req, HttpServletResponse resp);
+	public Stock removeStock(HttpServletRequest req, HttpServletResponse resp);
 
 }

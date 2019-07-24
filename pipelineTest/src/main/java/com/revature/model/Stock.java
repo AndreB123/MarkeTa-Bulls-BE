@@ -23,15 +23,18 @@ public class Stock {
 	@Column(name="stocksym")
 
 	private String symbol;
+	@Column(name="amount")
+	private int amount;
 	public Stock() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Stock(int id, double purchaseprice, String symbol) {
+	public Stock(int id, double purchaseprice, String symbol, int amount) {
 		super();
 		this.id = id;
 		this.purchaseprice = purchaseprice;
 		this.symbol = symbol;
+		this.amount = amount;
 	}
 	public int getId() {
 		return id;
@@ -51,10 +54,17 @@ public class Stock {
 	public void setSymbol(String symbol) {
 		this.symbol = symbol;
 	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + amount;
 		result = prime * result + id;
 		long temp;
 		temp = Double.doubleToLongBits(purchaseprice);
@@ -71,6 +81,8 @@ public class Stock {
 		if (getClass() != obj.getClass())
 			return false;
 		Stock other = (Stock) obj;
+		if (amount != other.amount)
+			return false;
 		if (id != other.id)
 			return false;
 		if (Double.doubleToLongBits(purchaseprice) != Double.doubleToLongBits(other.purchaseprice))
@@ -84,9 +96,9 @@ public class Stock {
 	}
 	@Override
 	public String toString() {
-		return "Stock [id=" + id + ", purchaseprice=" + purchaseprice + ", symbol=" + symbol + "]";
+		return "Stock [id=" + id + ", purchaseprice=" + purchaseprice + ", symbol=" + symbol + ", amount=" + amount
+				+ "]";
 	}
-
 	
 }
-
+	

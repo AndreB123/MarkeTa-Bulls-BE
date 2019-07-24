@@ -17,7 +17,7 @@ public interface PortfolioRepository {
 
 	List<Portfolio> getAllPortfolios(String username);	
 	Portfolio getPortfolioById(int id);
-	void insertPortfolio(Portfolio p);
-	void deletePortfolio(Portfolio p);
+	Portfolio insertPortfolio(int id);
+//	Portfolio deletePortfolio(int id);
 
 }

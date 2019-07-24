@@ -3,6 +3,8 @@ package com.revature.repository;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -20,7 +22,7 @@ public class UserRepositoryImpl implements UserRepository {
 	public User getUserByUsername(String username) {
 		User u = null;
 		Session s = null;
-		Transaction tx =null;
+		Transaction tx = null;
 
 		try {
 			s = SessionFactory.getSession();
@@ -30,9 +32,8 @@ public class UserRepositoryImpl implements UserRepository {
 			Root<User> root = cq.from(User.class);
 			cq.select(root).where(cb.equal(root.get("username"), username));
 			Query<User> q = s.createQuery(cq);
-			u=q.getSingleResult();
+			u = q.getSingleResult();
 			tx.commit();
-			
 
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -40,12 +41,12 @@ public class UserRepositoryImpl implements UserRepository {
 		} finally {
 			s.close();
 		}
-		
+
 		System.out.println(u);
 
 		return u;
 	}
-	
+
 	@Override
 	public void newUser(User u) {
 		Session s = null;
@@ -56,14 +57,33 @@ public class UserRepositoryImpl implements UserRepository {
 			tx = s.beginTransaction();
 			s.save(u);
 			tx.commit();
+		} catch (HibernateException ex) {
+			ex.printStackTrace();
+		} finally {
+			s.close();
+		}
+
+		return;
+	}
+
+	@Override
+	public User getAllUsers(HttpServletRequest req, HttpServletResponse resp) {
+		User u = null;
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			s=SessionFactory.getSession();
+			tx=s.beginTransaction();
+			s.save(u);
+			tx.commit();
 		}catch(HibernateException ex) {
 			ex.printStackTrace();
 		}finally {
 			s.close();
 		}
-		
-		return;
+
+		return u;
 	}
 
 }
-

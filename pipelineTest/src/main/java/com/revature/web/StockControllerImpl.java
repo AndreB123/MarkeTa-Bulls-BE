@@ -40,5 +40,26 @@ public class StockControllerImpl implements StockController {
 		return null;
 	}
 
+	@Override
+	@RequestMapping(value="/updateStock", method = RequestMethod.GET)
+	public Stock updateStock(HttpServletRequest req, HttpServletResponse resp) {
+		ss.updateStock(req, resp);
+		return null;
+	}
+
+	@Override
+	@RequestMapping(value="/insertStock", method = RequestMethod.POST)
+	public Stock insertStock(HttpServletRequest req, HttpServletResponse resp) {
+		ss.insertStock(req, resp);
+		return null;
+	}
+
+	@Override
+	@RequestMapping(value="/removeStock", method =RequestMethod.POST)
+	public Stock removeStock(HttpServletRequest req, HttpServletResponse resp) {
+		ss.removeStock(req, resp);
+		return null;
+	}
+
 }
 

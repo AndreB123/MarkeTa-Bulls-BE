@@ -15,5 +15,9 @@ public interface StockRepository {
 	public Stock getStockById(int id);
 
 	List<Stock> getAllStocks(int id);
+	
+	public Stock updateStock(int id, int amount);
+	public Stock insertStock(int id, int amount);
+	public Stock removeStock(int id);
 
 }
