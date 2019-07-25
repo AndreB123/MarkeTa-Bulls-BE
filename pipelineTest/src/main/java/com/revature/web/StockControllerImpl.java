@@ -51,6 +51,7 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value="/updateStock", method = RequestMethod.GET)
+	@CrossOrigin(origins = "http://localhost:4200")
 	public Stock updateStock(@RequestParam(name="amount")int amount) {
 		ss.updateStock(amount);
 		return null;
@@ -65,6 +66,7 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value="/removeStock", method =RequestMethod.POST)
+	@CrossOrigin(origins = "http://localhost:4200")
 	public Stock removeStock(@RequestParam(name="portId") int id) {
 		ss.removeStock(id);
 		return null;

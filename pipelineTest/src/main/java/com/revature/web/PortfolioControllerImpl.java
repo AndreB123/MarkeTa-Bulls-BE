@@ -45,13 +45,15 @@ public class PortfolioControllerImpl implements PortfolioController {
 
 	@Override
 	@RequestMapping(value = "/APortfolio", method = RequestMethod.GET)
+	@CrossOrigin(origins = "http://localhost:4200")
 	public Portfolio getPortfolioById(@RequestParam(name ="portId") int id) {		
 		ps.getPortfolioById(id);
 		return null;
 		
 	}
-
+    @Override
 	@RequestMapping(value = "/insertPortfolio", method = RequestMethod.POST)
+    @CrossOrigin(origins = "http://localhost:4200")
 	public Portfolio insertPortfolio(@RequestParam(name="portId") int id) {
 		ps.insertPortfolio(id);	
 		return null;
