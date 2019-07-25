@@ -21,7 +21,7 @@ public class Stock {
 	private double purchaseprice;
 	@Column(name="stocksym")
 	private String symbol;
-	@Column(name="ammount")
+	@Column(name="amount")
 	private int amount;
 	public Stock() {
 		super();
