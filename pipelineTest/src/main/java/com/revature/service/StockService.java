@@ -14,7 +14,7 @@ public interface StockService {
 	List<Stock> getAllStocks(HttpServletRequest req, HttpServletResponse resp);
 	//Stock getStockById(int id);
 	public Stock updateStock(HttpServletRequest req, HttpServletResponse resp);
-	public Stock insertStock(HttpServletRequest req, HttpServletResponse resp);
+	public Stock insertStock(int id, String symbol, int amount, double price);
 	public Stock removeStock(HttpServletRequest req, HttpServletResponse resp);
 	Stock getStockById(HttpServletRequest req, HttpServletResponse resp);
     public Stock getStockById(int id);

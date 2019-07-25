@@ -51,11 +51,8 @@ public class StockServiceImpl implements StockService {
 	}
 
 	@Override
-	public Stock insertStock(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		int stockId = (int)s.getAttribute("stockId");
-		int amount = (int)s.getAttribute("amount");
-		return sr2.insertStock(stockId, amount);
+	public Stock insertStock(int id, String symbol, int amount, double price) {
+		return sr2.insertStock(id, symbol, amount, price);
 	}
 
 	@Override

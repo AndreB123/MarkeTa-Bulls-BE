@@ -6,14 +6,19 @@ package com.revature.model;
  */
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="portfolio", schema="\"StockProj\"")
 public class Portfolio {
 	@Id
-	@Column(name="portfolioId")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="portfolio_portfolioid_seq")
+	@SequenceGenerator(name="portfolio_portfolioid_seq", sequenceName="\"StockProj\".portfolio_portfolioid_seq", allocationSize=1)
+	@Column(name="portfolioId", updatable = false, nullable = false)
 	private int id;
 	@Column(name="portName")
 	private String name;

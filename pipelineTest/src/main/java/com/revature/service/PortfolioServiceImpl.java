@@ -30,4 +30,10 @@ public class PortfolioServiceImpl implements PortfolioService{
 	public Portfolio getPortfolioById(int id) {
 		return pr2.getPortfolioById(id);
 	}
+
+	@Override
+	public void insertPortfolio(String username, String portname) {
+		pr2.insertPortfolio(username, portname);
+		return;
+	}
 }

@@ -1,5 +1,6 @@
 package com.revature.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.Portfolio;
+import com.revature.model.Stock;
+import com.revature.repository.StockRepositoryImpl;
 import com.revature.service.PortfolioService;
 
 @RestController
@@ -31,11 +34,36 @@ public class PortfolioControllerImpl implements PortfolioController {
 	@Override
 	@RequestMapping(value = "/Portfolios", method = RequestMethod.GET)
 	@CrossOrigin(origins = "http://localhost:4200")
-	public String getAllPortfolios(@RequestParam(name = "portfolioId") String username) {
+	public String getAllPortfolios(@RequestParam(name = "Username") String username) {
 		System.out.println(username);
 		ObjectMapper mapper = new ObjectMapper();
+		String Re = "{\"portfolios\": [";
 		try {
-			return mapper.writeValueAsString(ps.getAllPortfolios(username));
+			List<Portfolio> li = ps.getAllPortfolios(username);
+			List<List<Stock>> st = new ArrayList <List <Stock>>();
+			for(int i = 0; i < li.size(); i++) {
+				Re += mapper.writeValueAsString(li.get(i));
+				if(null != new StockRepositoryImpl().getAllStocks(li.get(i).getId()))
+					st.add(new StockRepositoryImpl().getAllStocks(li.get(i).getId()));
+				if(i != li.size()-1)
+					Re +=",";
+			}
+			Re += "], \"stocks\": [";
+			for(int i = 0; i < st.size(); i++)
+			{
+				Re += "{ \"port-" + i + "\": [";
+				for(int j = 0; j < st.get(i).size(); j++) {
+					Re += mapper.writeValueAsString(st.get(i).get(j));
+					if(j != st.get(i).size()-1)
+						Re +=",";
+				}
+				Re +="]}";
+				if(i != st.size()-1)
+					Re +=",";
+			}
+			Re += "]}";
+			System.out.println(Re);
+			return Re;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -51,9 +79,11 @@ public class PortfolioControllerImpl implements PortfolioController {
 	}
 
 	@RequestMapping(value = "/insertPortfolio", method = RequestMethod.POST)
-	public Portfolio insertPortfolio(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		s.setAttribute("portfolioId", 1);
+	@CrossOrigin(origins = "http://localhost:4200")
+	public Portfolio insertPortfolio(@RequestParam(name = "Username") String username, @RequestParam(name = "name") String portname) {
+		System.out.println(portname);
+		System.out.println(username);
+		ps.insertPortfolio(username, portname);
 		return null;
 	}
 

@@ -12,7 +12,7 @@ public interface StockController {
 
 	//public Stock getStockById(HttpServletRequest req, HttpServletResponse resp);
 	public Stock updateStock(HttpServletRequest req, HttpServletResponse resp);
-	public Stock insertStock(HttpServletRequest req, HttpServletResponse resp);
+	public Stock insertStock(int id, String symbol, int amount, double price);
 	public Stock removeStock(HttpServletRequest req, HttpServletResponse resp);
 	String getStockById(int id);
 

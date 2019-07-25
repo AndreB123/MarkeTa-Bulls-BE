@@ -48,7 +48,7 @@ public class StockRepositoryImpl implements StockRepository {
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			stock = s.createNativeQuery("SELECT * FROM \"StockProj\".portfolio left join \"StockProj\".stocktable ON portId=portfolioId", Stock.class).getResultList();
+			stock = s.createNativeQuery("SELECT * FROM \"StockProj\".portfolio left join \"StockProj\".stocktable ON portId=portfolioId where portId=" + id, Stock.class).getResultList();
 
 			tx.commit();
 		} catch (HibernateException e) {
@@ -72,7 +72,7 @@ public class StockRepositoryImpl implements StockRepository {
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			x = (Stock) s.createNativeQuery("UPDATE stocktable set amount= ?"+ amount + " where portId=portfolioId", Stock.class).getResultList();
+			x = (Stock) s.createNativeQuery("UPDATE stocktable set amount= "+ amount + " where portId=portfolioId", Stock.class).getResultList();
 
 			tx.commit();
 		} catch (HibernateException e) {
@@ -86,7 +86,7 @@ public class StockRepositoryImpl implements StockRepository {
 	}
 
 	@Override
-	public Stock insertStock(int id, int amount) {
+	public Stock insertStock(int id, String symbol, int amount, double price) {
 		Stock x = null;
 		Session s = null;
 		Transaction tx = null;
@@ -94,7 +94,7 @@ public class StockRepositoryImpl implements StockRepository {
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			x = (Stock) s.createNativeQuery("INSERT INTO stocktable values (?,?,?,?)", Stock.class).getResultList();
+			x = (Stock) s.createNativeQuery("INSERT INTO stocktable values (" + id + ",'" + symbol + "'," + amount + "," + price + ")", Stock.class).getResultList();
 
 			tx.commit();
 		} catch (HibernateException e) {
@@ -115,7 +115,7 @@ public class StockRepositoryImpl implements StockRepository {
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			x = (Stock) s.createNativeQuery("DELETE FROM stocktable WHERE stockID=?", Stock.class).getResultList();
+			x = (Stock) s.createNativeQuery("DELETE FROM stocktable WHERE stockID=" + id, Stock.class).getResultList();
 
 			tx.commit();
 		} catch (HibernateException e) {
