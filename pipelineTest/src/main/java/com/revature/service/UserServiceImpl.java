@@ -45,16 +45,14 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void newUser(HttpServletRequest req, HttpServletResponse resp) {
-		User newUser = new User(req.getParameter("username"), req.getParameter("password"), 0.0);
-		new UserRepositoryImpl().newUser(newUser);
+	public void newUser(String username, String password) {		
+		ur2.newUser(username, password);
 		return;
 	}
 
 	@Override
-	public User getAllUsers(HttpServletRequest req, HttpServletResponse resp) {
-		User getUser= new User(req.getParameter("username"), req.getParameter("password"),0.0);
-		return ur2.getAllUsers(req, resp);
+	public User getAllUsers(String username, String password) {		
+		return ur2.getAllUsers(username, password);
 		
 	}
 }

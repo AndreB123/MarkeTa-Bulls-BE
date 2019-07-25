@@ -45,17 +45,16 @@ public class PortfolioControllerImpl implements PortfolioController {
 
 	@Override
 	@RequestMapping(value = "/APortfolio", method = RequestMethod.GET)
-	public Portfolio getPortfolioById(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		s.setAttribute("portfolioId", 1);
+	public Portfolio getPortfolioById(@RequestParam(name ="portId") int id) {		
+		ps.getPortfolioById(id);
 		return null;
+		
 	}
 
 	@RequestMapping(value = "/insertPortfolio", method = RequestMethod.POST)
-	public Portfolio insertPortfolio(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		s.setAttribute("portfolioId", 1);
+	public Portfolio insertPortfolio(@RequestParam(name="portId") int id) {
+		ps.insertPortfolio(id);	
 		return null;
 	}
-
+	
 }

@@ -1,15 +1,16 @@
 package com.revature.service;
 
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.revature.model.User;
 
 public interface UserService {
-	public void newUser(HttpServletRequest req, HttpServletResponse resp);
+	
 	public User getUserByUsername(String username);
 
 	public User isValidUser(String username, String password);
-	User getAllUsers(HttpServletRequest req, HttpServletResponse resp);
+	//User getAllUsers(HttpServletRequest req, HttpServletResponse resp);
+	//void newUser(String username, String password);
+
+	void newUser(String username, String password);
+
+	User getAllUsers(String username, String password);
 }

@@ -47,8 +47,28 @@ public class UserRepositoryImpl implements UserRepository {
 		return u;
 	}
 
+//	@Override
+//	public void newUser(User u) {
+//		Session s = null;
+//		Transaction tx = null;
+//
+//		try {
+//			s = SessionFactory.getSession();
+//			tx = s.beginTransaction();
+//			s.save(u);
+//			tx.commit();
+//		} catch (HibernateException ex) {
+//			ex.printStackTrace();
+//		} finally {
+//			s.close();
+//		}
+//
+//		return;
+//	}
+
 	@Override
-	public void newUser(User u) {
+	public User getAllUsers(String username, String password) {
+		User u = null;
 		Session s = null;
 		Transaction tx = null;
 
@@ -63,27 +83,25 @@ public class UserRepositoryImpl implements UserRepository {
 			s.close();
 		}
 
-		return;
-	}
-
-	@Override
-	public User getAllUsers(HttpServletRequest req, HttpServletResponse resp) {
-		User u = null;
-		Session s = null;
-		Transaction tx = null;
-		
-		try {
-			s=SessionFactory.getSession();
-			tx=s.beginTransaction();
-			s.save(u);
-			tx.commit();
-		}catch(HibernateException ex) {
-			ex.printStackTrace();
-		}finally {
-			s.close();
-		}
-
 		return u;
 	}
 
+	public void newUser(String username, String password) {
+		Session s = null;
+		Transaction tx = null;
+
+		try {
+			s = SessionFactory.getSession();
+			tx = s.beginTransaction();
+			s.save(username, password);
+			tx.commit();
+		} catch (HibernateException ex) {
+			ex.printStackTrace();
+		} finally {
+			s.close();
+		}
+
+		return;
+	}
+	
 }

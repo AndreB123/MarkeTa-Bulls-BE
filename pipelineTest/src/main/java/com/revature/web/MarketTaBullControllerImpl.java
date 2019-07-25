@@ -1,8 +1,5 @@
 package com.revature.web;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,17 +37,19 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 
 	@Override
 	@RequestMapping(value="/CreateUser", method=RequestMethod.POST)
-	public void createUser(HttpServletRequest req, HttpServletResponse resp) {
+	public void createUser(@RequestParam(name="Username") String username, @RequestParam(name="password") String password) {
 		System.out.println("controller Create User method");
-		us.newUser(req, resp);
+		us.newUser(username, password);
 		return;
 	}
 
 	@Override
 	@RequestMapping(value="/getAllUsers", method=RequestMethod.GET)
-	public void getAllUsers(HttpServletRequest req, HttpServletResponse resp) {
+	public void getAllUsers(@RequestParam(name="Username") String username, @RequestParam(name="password") String password) {
 		System.out.println("controller get all users method");
-		us.getAllUsers(req, resp);
+		us.getAllUsers(username, password);
 		return;		
-	}	
+	}
+
+		
 }
