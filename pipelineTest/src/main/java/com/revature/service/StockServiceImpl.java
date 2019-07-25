@@ -21,22 +21,35 @@ public class StockServiceImpl implements StockService {
 	public StockServiceImpl(StockRepository sr) {
 		this.sr2 = sr;
 	}
-	
+
 	public void setSr(StockRepository sr) {
 		this.sr2 = sr2;
 	}
 
 	@Override
-	public List<Stock> getAllStocks(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		int portfolioId = (int)s.getAttribute("portfolioid");
-		System.out.println("service " + portfolioId);
-		return sr2.getAllStocks(portfolioId);
+	public List<Stock> getAllStocks(int id, String symbol, int amount, double price) {
+		return sr2.getAllStocks(id, symbol, amount, price);
 	}
 
 	@Override
-	public Stock getStockById(HttpServletRequest req, HttpServletResponse resp) {
-		return sr2.getStockById(1);
+	public Stock getStockById(int id) {
+		return sr2.getStockById(id);
+	}
+
+	@Override
+	public Stock updateStock(int amount) {
+		return sr2.updateStock(amount);
+	}
+
+	@Override
+	public Stock insertStock(int id, String symbol, int amount, double price) {
+
+		return sr2.insertStock(id, symbol, amount, price);
+	}
+
+	@Override
+	public Stock removeStock(int id) {
+		return sr2.removeStock(id);
 	}
 
 }

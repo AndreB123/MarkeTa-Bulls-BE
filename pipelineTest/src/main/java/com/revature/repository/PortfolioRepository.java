@@ -7,14 +7,17 @@ import org.springframework.stereotype.Repository;
 
 import com.revature.model.Portfolio;
 
-
+/*
+ * The PortfolioRepository listing the methods that will be implemented in the 
+ * PortfolioRepository will implement. 
+ */
 
 @Repository("pr")
 public interface PortfolioRepository {
 
 	List<Portfolio> getAllPortfolios(String username);	
 	Portfolio getPortfolioById(int id);
-	void insertPortfolio(Portfolio p);
-	void deletePortfolio(Portfolio p);
+	Portfolio insertPortfolio(int id);
+//	Portfolio deletePortfolio(int id);
 
 }

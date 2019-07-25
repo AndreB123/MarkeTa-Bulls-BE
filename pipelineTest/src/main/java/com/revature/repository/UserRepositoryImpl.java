@@ -10,7 +10,6 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
-import com.revature.model.Stock;
 import com.revature.model.User;
 import com.revature.util.SessionFactory;
 
@@ -21,7 +20,7 @@ public class UserRepositoryImpl implements UserRepository {
 	public User getUserByUsername(String username) {
 		User u = null;
 		Session s = null;
-		Transaction tx =null;
+		Transaction tx = null;
 
 		try {
 			s = SessionFactory.getSession();
@@ -31,24 +30,42 @@ public class UserRepositoryImpl implements UserRepository {
 			Root<User> root = cq.from(User.class);
 			cq.select(root).where(cb.equal(root.get("username"), username));
 			Query<User> q = s.createQuery(cq);
-			u=q.getSingleResult();
+			u = q.getSingleResult();
 			tx.commit();
-			
-			System.out.println(u);
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
 			s.close();
 		}
-		
+
 		System.out.println(u);
 
 		return u;
 	}
-	
+
+//	@Override
+//	public void newUser(User u) {
+//		Session s = null;
+//		Transaction tx = null;
+//
+//		try {
+//			s = SessionFactory.getSession();
+//			tx = s.beginTransaction();
+//			s.save(u);
+//			tx.commit();
+//		} catch (HibernateException ex) {
+//			ex.printStackTrace();
+//		} finally {
+//			s.close();
+//		}
+//
+//		return;
+//	}
+
 	@Override
-	public void newUser(User u) {
+	public User getAllUsers(String username, String password) {
+		User u = null;
 		Session s = null;
 		Transaction tx = null;
 
@@ -57,14 +74,31 @@ public class UserRepositoryImpl implements UserRepository {
 			tx = s.beginTransaction();
 			s.save(u);
 			tx.commit();
-		}catch(HibernateException ex) {
+		} catch (HibernateException ex) {
 			ex.printStackTrace();
-		}finally {
+		} finally {
 			s.close();
 		}
-		
-		return;
+
+		return u;
 	}
 
-}
+	public void newUser(String username, String password) {
+		Session s = null;
+		Transaction tx = null;
 
+		try {
+			s = SessionFactory.getSession();
+			tx = s.beginTransaction();
+			s.save(username, password);
+			tx.commit();
+		} catch (HibernateException ex) {
+			ex.printStackTrace();
+		} finally {
+			s.close();
+		}
+
+		return;
+	}
+	
+}

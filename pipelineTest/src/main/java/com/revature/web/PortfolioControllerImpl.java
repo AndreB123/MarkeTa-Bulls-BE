@@ -18,16 +18,16 @@ import com.revature.model.Portfolio;
 import com.revature.service.PortfolioService;
 
 @RestController
-@RequestMapping(path="/MarkeTa-Bulls")
-public class PortfolioControllerImpl implements PortfolioController{
+@RequestMapping(path = "/MarkeTa-Bulls")
+public class PortfolioControllerImpl implements PortfolioController {
 
 	private PortfolioService ps;
-	
+
 	@Autowired
 	public void setPs(PortfolioService ps) {
 		this.ps = ps;
 	}
-	
+
 	@Override
 	@RequestMapping(value="/Portfolios", method=RequestMethod.GET)
 	@CrossOrigin(origins = "http://localhost:4200")
@@ -52,11 +52,19 @@ public class PortfolioControllerImpl implements PortfolioController{
 	}
 
 	@Override
-	@RequestMapping(value="/APortfolio", method=RequestMethod.GET)
-	public Portfolio getPortfolioById(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		s.setAttribute("portfolioid", 1);
+	@RequestMapping(value = "/APortfolio", method = RequestMethod.GET)
+	@CrossOrigin(origins = "http://localhost:4200")
+	public Portfolio getPortfolioById(@RequestParam(name ="portId") int id) {		
+		ps.getPortfolioById(id);
+		return null;
+		
+	}
+    @Override
+	@RequestMapping(value = "/insertPortfolio", method = RequestMethod.POST)
+    @CrossOrigin(origins = "http://localhost:4200")
+	public Portfolio insertPortfolio(@RequestParam(name="portId") int id) {
+		ps.insertPortfolio(id);	
 		return null;
 	}
-
+	
 }

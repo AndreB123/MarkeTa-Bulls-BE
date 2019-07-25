@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.revature.model.Portfolio;
 
 public interface PortfolioController {
-	public String getAllPortfolios(String username);
-	public Portfolio getPortfolioById(HttpServletRequest req, HttpServletResponse resp);
+
+
+
+	String getAllPortfolios(String username);
+	public Portfolio getPortfolioById(int id);
+	public Portfolio insertPortfolio(int id);
+
 }

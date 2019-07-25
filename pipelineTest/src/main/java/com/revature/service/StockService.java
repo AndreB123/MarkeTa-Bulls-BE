@@ -9,9 +9,18 @@ import com.revature.model.Stock;
 
 public interface StockService {
 
-	//List<Stock> getAllStocks(int portfolioId);
+	// List<Stock> getAllStocks(int portfolioId);
 
-	List<Stock> getAllStocks(HttpServletRequest req, HttpServletResponse resp);
-	Stock getStockById(HttpServletRequest req, HttpServletResponse resp);
+	List<Stock> getAllStocks(int id, String symbol, int amount, double price);
+	// Stock getStockById(int id);
+
+	public Stock insertStock(int id, String symbol, int amount, double price);
+
+	// Stock getStockById(HttpServletRequest req, HttpServletResponse resp);
+	public Stock getStockById(int id);
+
+	Stock updateStock(int amount);
+
+	public Stock removeStock(int id);
 
 }

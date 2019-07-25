@@ -10,13 +10,15 @@ import com.revature.repository.PortfolioRepository;
 import com.revature.repository.PortfolioRepositoryImpl;
 
 @Service("ps")
-public class PortfolioServiceImpl implements PortfolioService{
+public class PortfolioServiceImpl implements PortfolioService {
 
 	private PortfolioRepository pr2;
-	
+
 	@Autowired
-	public PortfolioServiceImpl(PortfolioRepositoryImpl pr) {this.pr2 = pr;}
-	
+	public PortfolioServiceImpl(PortfolioRepositoryImpl pr) {
+		this.pr2 = pr;
+	}
+
 	public void setPr(PortfolioRepository pr) {
 		this.pr2 = pr2;
 	}
@@ -29,5 +31,10 @@ public class PortfolioServiceImpl implements PortfolioService{
 	@Override
 	public Portfolio getPortfolioById(int id) {
 		return pr2.getPortfolioById(id);
+	}
+
+	@Override
+	public Portfolio insertPortfolio(int id) {
+		return pr2.insertPortfolio(id);
 	}
 }

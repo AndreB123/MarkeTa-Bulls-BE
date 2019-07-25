@@ -1,12 +1,15 @@
 package com.revature.model;
 
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+/*
+ * User class using Java Bean design pattern. Tables are mapped with annotations
+ * within the class. 
+ */
 
 @Entity
 @Table(name="users", schema="\"StockProj\"")

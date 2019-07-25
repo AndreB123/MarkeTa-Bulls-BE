@@ -9,9 +9,12 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import com.revature.model.Portfolio;
+import com.revature.model.Stock;
 import com.revature.util.SessionFactory;
 
-
+/*
+ * Implemented methods from declared methods within PortfolioRepository. 
+ */
 
 @Repository("pr2")
 public class PortfolioRepositoryImpl implements PortfolioRepository {
@@ -24,7 +27,7 @@ public class PortfolioRepositoryImpl implements PortfolioRepository {
 	try {
 		s = SessionFactory.getSession();
 		tx = s.beginTransaction();
-		portfolios = s.createNativeQuery("Select * from \"StockProj\".portfolio where portusername = '" + username + "'", Portfolio.class).getResultList();
+		portfolios = s.createNativeQuery("Select * from \"StockProj\".portfolio where portName = '" + username + "'", Portfolio.class).getResultList();
 		tx.commit();
 	} catch (HibernateException e) {
 		e.printStackTrace();
@@ -41,10 +44,12 @@ public class PortfolioRepositoryImpl implements PortfolioRepository {
 	public Portfolio getPortfolioById(int id) {
 		Portfolio p = null;
 		Session s = null;
+		Transaction tx = null;
 
 		try {
 			s = SessionFactory.getSession();
-			p = s.get(Portfolio.class, id);
+			tx= s.beginTransaction();
+			//p = s.createNativeQuery("SELECT * ";Portfolio.class, id);
 
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -56,42 +61,47 @@ public class PortfolioRepositoryImpl implements PortfolioRepository {
 
 
 	@Override
-	public void insertPortfolio(Portfolio p) {
+	public Portfolio insertPortfolio(int id) {
+		Portfolio j = null;
 		Session s = null;
 		Transaction tx = null;
 
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			s.save(p);
-			tx.commit();
+			j = (Portfolio) s.createNativeQuery("INSERT INTO portfolio values (?,?,?,?)", Portfolio.class).getResultList();
 
+			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			tx.rollback();
+
 		} finally {
 			s.close();
 		}
+		return j;
 	}
 
-	@Override
-	public void deletePortfolio(Portfolio p) {
-		Session s= null;
-		Transaction tx =null;
-		
-		try {
-			s= SessionFactory.getSession();
-			tx= s.beginTransaction();
-			s.delete(p);
-			tx.commit();
-		}catch(HibernateException e) {
-			e.printStackTrace();
-			tx.rollback();
-		} finally {
-			s.close();
-		}
-		
-	}
+//	@Override
+//	public Portfolio deletePortfolio(int id) {
+//		Portfolio j = null;
+//		Session s = null;
+//		Transaction tx = null;
+//		try {
+//			s = SessionFactory.getSession();
+//			tx = s.beginTransaction();
+//			j = (Portfolio) s.createNativeQuery("DELETE FROM portfolio WHERE portfolioId=?", Portfolio.class).getResultList();
+//
+//			tx.commit();
+//		} catch (HibernateException e) {
+//			e.printStackTrace();
+//			tx.rollback();
+//
+//		} finally {
+//			s.close();
+//		}
+//		return j;
+//}
 }
 	
 	
