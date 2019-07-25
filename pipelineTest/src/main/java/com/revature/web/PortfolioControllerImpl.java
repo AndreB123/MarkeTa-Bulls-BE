@@ -68,16 +68,18 @@ public class PortfolioControllerImpl implements PortfolioController {
 			ex.printStackTrace();
 		}
 		return "Portfolio Request Failed";
+
 	}
 
 	@Override
 	@RequestMapping(value = "/APortfolio", method = RequestMethod.GET)
-	public Portfolio getPortfolioById(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		s.setAttribute("portfolioId", 1);
+	@CrossOrigin(origins = "http://localhost:4200")
+	public Portfolio getPortfolioById(@RequestParam(name ="portId") int id) {		
+		ps.getPortfolioById(id);
 		return null;
+		
 	}
-
+    @Override
 	@RequestMapping(value = "/insertPortfolio", method = RequestMethod.POST)
 	@CrossOrigin(origins = "http://localhost:4200")
 	public Portfolio insertPortfolio(@RequestParam(name = "Username") String username, @RequestParam(name = "name") String portname) {
@@ -86,5 +88,5 @@ public class PortfolioControllerImpl implements PortfolioController {
 		ps.insertPortfolio(username, portname);
 		return null;
 	}
-
+	
 }

@@ -62,7 +62,7 @@ public class StockRepositoryImpl implements StockRepository {
 	}
 
 	@Override
-	public Stock updateStock(int id, int amount) {
+	public Stock updateStock(int amount) {
 		Stock x = null;
 		Session s = null;
 		Transaction tx = null;
@@ -94,7 +94,8 @@ public class StockRepositoryImpl implements StockRepository {
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			x = (Stock) s.createNativeQuery("INSERT INTO stocktable values (" + id + ",'" + symbol + "'," + amount + "," + price + ")", Stock.class).getResultList();
+
+			x = (Stock) s.createNativeQuery("INSERT INTO stocktable values ("+id+",'"+symbol+"',"+amount+","+ price+")", Stock.class).getResultList();
 
 			tx.commit();
 		} catch (HibernateException e) {
@@ -116,7 +117,6 @@ public class StockRepositoryImpl implements StockRepository {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
 			x = (Stock) s.createNativeQuery("DELETE FROM stocktable WHERE stockID=" + id, Stock.class).getResultList();
-
 			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();

@@ -1,15 +1,10 @@
 package com.revature.web;
 
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.revature.model.User;
-
 
 public interface MarketTaBullController {
-//	public User getUserByUsername(String username);
-	public String isValidUser(String username, String Password);
-	public void createUser(HttpServletRequest req, HttpServletResponse resp);
-	public void getAllUsers(HttpServletRequest req, HttpServletResponse resp);
+	public String isValidUser(String username, String Password);	
+	public void getAllUsers(String username, String password);
+	public void createUser(String username, String password, double balance);
+
 }

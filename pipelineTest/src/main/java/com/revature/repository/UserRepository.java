@@ -12,6 +12,6 @@ import com.revature.model.User;
 @Repository("ur")
 public interface UserRepository {
 	User getUserByUsername(String username);
-	void newUser(User u);	
-	User getAllUsers(HttpServletRequest req, HttpServletResponse resp);
+	void newUser(String username, String password, double balance);
+	public User getAllUsers(String username, String password);
 }
