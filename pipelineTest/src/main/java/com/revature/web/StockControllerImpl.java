@@ -59,8 +59,8 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value="/insertStock", method = RequestMethod.POST)
-	public Stock insertStock(@RequestParam(name="portId")int id, @RequestParam(name="symbol") String symbol, @RequestParam(name="amount") int amount, @RequestParam(name="price") double price) {
-		ss.insertStock(id,symbol,amount,price);
+	public Stock insertStock(@RequestParam(name="portid")int id, @RequestParam(name="symbol")String symbol, @RequestParam(name="amount") int amount, @RequestParam(name="price")double price) {
+		ss.insertStock(id, symbol, amount, price);
 		return null;
 	}
 

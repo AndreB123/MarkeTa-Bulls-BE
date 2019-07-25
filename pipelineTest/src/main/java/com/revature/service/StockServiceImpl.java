@@ -43,7 +43,6 @@ public class StockServiceImpl implements StockService {
 
 	@Override
 	public Stock insertStock(int id, String symbol, int amount, double price) {
-
 		return sr2.insertStock(id, symbol, amount, price);
 	}
 

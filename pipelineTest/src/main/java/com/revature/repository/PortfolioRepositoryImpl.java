@@ -27,7 +27,7 @@ public class PortfolioRepositoryImpl implements PortfolioRepository {
 	try {
 		s = SessionFactory.getSession();
 		tx = s.beginTransaction();
-		portfolios = s.createNativeQuery("Select * from \"StockProj\".portfolio where portName = '" + username + "'", Portfolio.class).getResultList();
+		portfolios = s.createNativeQuery("Select * from \"StockProj\".portfolio where portusername = '" + username + "'", Portfolio.class).getResultList();
 		tx.commit();
 	} catch (HibernateException e) {
 		e.printStackTrace();
@@ -61,21 +61,21 @@ public class PortfolioRepositoryImpl implements PortfolioRepository {
 
 
 	@Override
-	public Portfolio insertPortfolio(int id) {
+	public Portfolio insertPortfolio(String user, String portname) {
 		Portfolio j = null;
 		Session s = null;
 		Transaction tx = null;
+		Portfolio p = new Portfolio(1, portname, 0, user);
+		System.out.println(p);
 
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			j = (Portfolio) s.createNativeQuery("INSERT INTO portfolio values (?,?,?,?)", Portfolio.class).getResultList();
-
+			s.save(p);
 			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			tx.rollback();
-
 		} finally {
 			s.close();
 		}

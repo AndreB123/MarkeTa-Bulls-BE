@@ -40,9 +40,9 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 	@Override
 	@RequestMapping(value="/CreateUser", method=RequestMethod.POST)
 	@CrossOrigin(origins = "http://localhost:4200")
-	public void createUser(@RequestParam(name="Username") String username, @RequestParam(name="password") String password, @RequestParam(name="initbalance") double balance) {
+	public void createUser(@RequestParam(name="Username") String username, @RequestParam(name="password") String password, @RequestParam(name="balance") String balance) {
 		System.out.println("controller Create User method");
-		us.newUser(username, password, balance);
+		us.newUser(username, password, Double.parseDouble(balance));
 		return;
 	}
 

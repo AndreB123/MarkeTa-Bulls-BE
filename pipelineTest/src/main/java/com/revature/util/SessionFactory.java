@@ -14,6 +14,7 @@ public class SessionFactory {
 					.setProperty("hibernate.connection.username", System.getenv("dbusername"))
 					.setProperty("hibernate.connection.password", System.getenv("dbpass"))
 
+
 					.buildSessionFactory();
 		}
 		
