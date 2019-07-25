@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService{
 		
 		if(Username != null && !Username.equals("") && password != null && !password.equals("")) {
 			if(ur2.getUserByUsername(Username) != null && password.equals(ur2.getUserByUsername(Username).getPassword())) {
-				
+				System.out.println(Username);
 				return ur2.getUserByUsername(Username);
 			}
 		}

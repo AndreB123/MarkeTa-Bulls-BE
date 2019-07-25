@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
+import com.revature.model.Stock;
 import com.revature.model.User;
 import com.revature.util.SessionFactory;
 
@@ -33,7 +34,7 @@ public class UserRepositoryImpl implements UserRepository {
 			u=q.getSingleResult();
 			tx.commit();
 			
-
+			System.out.println(u);
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			tx.rollback();
