@@ -21,57 +21,35 @@ public class StockServiceImpl implements StockService {
 	public StockServiceImpl(StockRepository sr) {
 		this.sr2 = sr;
 	}
-	
+
 	public void setSr(StockRepository sr) {
 		this.sr2 = sr2;
 	}
 
 	@Override
-	public List<Stock> getAllStocks(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		int stockId = (int)s.getAttribute("stockId");
-		System.out.println("service " + stockId);
-		sr2.getAllStocks(stockId);
-		return null;
-	}
-
-	@Override
-	public Stock getStockById(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		int stockId = (int)s.getAttribute("stockId");
-		return sr2.getStockById(1);
-	}
-
-	@Override
-	public Stock updateStock(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		int stockId = (int)s.getAttribute("stockId");
-		int amount = (int)s.getAttribute("amount");
-		return sr2.updateStock(stockId, amount);
-	}
-
-	@Override
-	public Stock insertStock(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		int stockId = (int)s.getAttribute("stockId");
-		int amount = (int)s.getAttribute("amount");
-		return sr2.insertStock(stockId, amount);
-	}
-
-	@Override
-	public Stock removeStock(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession s = req.getSession(false);
-		int stockId = (int)s.getAttribute("stockId");		
-		return sr2.removeStock(stockId);
+	public List<Stock> getAllStocks(int id, String symbol, int amount, double price) {
+		return sr2.getAllStocks(id, symbol, amount, price);
 	}
 
 	@Override
 	public Stock getStockById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return sr2.getStockById(id);
 	}
 
-	
+	@Override
+	public Stock updateStock(int amount) {
+		return sr2.updateStock(amount);
+	}
+
+	@Override
+	public Stock insertStock(int id, String symbol, int amount, double price) {
+
+		return sr2.insertStock(id, symbol, amount, price);
+	}
+
+	@Override
+	public Stock removeStock(int id) {
+		return sr2.removeStock(id);
+	}
 
 }
-

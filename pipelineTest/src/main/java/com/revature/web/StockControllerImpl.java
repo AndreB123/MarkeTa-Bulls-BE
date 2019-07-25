@@ -29,9 +29,9 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value = "/stockpage", method = RequestMethod.GET)
-	public List<Stock> getAllStocks(HttpServletRequest req, HttpServletResponse resp) {
+	public List<Stock> getAllStocks(@RequestParam(name="portId")int id, @RequestParam(name="symbol") String symbol, @RequestParam(name="amount") int amount, @RequestParam(name="price") double price) {
 		System.out.println("stock controller method");
-		ss.getAllStocks(req, resp);
+		ss.getAllStocks(id,symbol,amount, price);
 		return null;
 	}
 
@@ -51,22 +51,22 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value="/updateStock", method = RequestMethod.GET)
-	public Stock updateStock(HttpServletRequest req, HttpServletResponse resp) {
-		ss.updateStock(req, resp);
+	public Stock updateStock(@RequestParam(name="amount")int amount) {
+		ss.updateStock(amount);
 		return null;
 	}
 
 	@Override
 	@RequestMapping(value="/insertStock", method = RequestMethod.POST)
-	public Stock insertStock(HttpServletRequest req, HttpServletResponse resp) {
-		ss.insertStock(req, resp);
+	public Stock insertStock(@RequestParam(name="portId")int id, @RequestParam(name="symbol") String symbol, @RequestParam(name="amount") int amount, @RequestParam(name="price") double price) {
+		ss.insertStock(id,symbol,amount,price);
 		return null;
 	}
 
 	@Override
 	@RequestMapping(value="/removeStock", method =RequestMethod.POST)
-	public Stock removeStock(HttpServletRequest req, HttpServletResponse resp) {
-		ss.removeStock(req, resp);
+	public Stock removeStock(@RequestParam(name="portId") int id) {
+		ss.removeStock(id);
 		return null;
 	}
 

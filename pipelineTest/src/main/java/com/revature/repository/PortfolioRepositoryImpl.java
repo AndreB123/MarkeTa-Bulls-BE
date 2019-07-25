@@ -44,10 +44,12 @@ public class PortfolioRepositoryImpl implements PortfolioRepository {
 	public Portfolio getPortfolioById(int id) {
 		Portfolio p = null;
 		Session s = null;
+		Transaction tx = null;
 
 		try {
 			s = SessionFactory.getSession();
-			p = s.get(Portfolio.class, id);
+			tx= s.beginTransaction();
+			//p = s.createNativeQuery("SELECT * ";Portfolio.class, id);
 
 		} catch (HibernateException e) {
 			e.printStackTrace();
