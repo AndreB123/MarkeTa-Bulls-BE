@@ -27,8 +27,8 @@ public class StockServiceImpl implements StockService {
 	}
 
 	@Override
-	public List<Stock> getAllStocks(int id, String symbol, int amount, double price) {
-		return sr2.getAllStocks(id, symbol, amount, price);
+	public List<Stock> getAllStocks(int id) {
+		return sr2.getAllStocks(id);
 	}
 
 	@Override

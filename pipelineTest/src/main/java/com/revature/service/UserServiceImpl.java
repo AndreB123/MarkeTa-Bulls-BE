@@ -45,8 +45,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void newUser(String username, String password) {		
-		ur2.newUser(username, password);
+	public void newUser(String username, String password, double balance) {		
+		ur2.newUser(username, password, balance);
 		return;
 	}
 

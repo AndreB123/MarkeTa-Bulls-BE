@@ -29,9 +29,9 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value = "/stockpage", method = RequestMethod.GET)
-	public List<Stock> getAllStocks(@RequestParam(name="portId")int id, @RequestParam(name="symbol") String symbol, @RequestParam(name="amount") int amount, @RequestParam(name="price") double price) {
+	public List<Stock> getAllStocks(@RequestParam(name="portId")int id) {
 		System.out.println("stock controller method");
-		ss.getAllStocks(id,symbol,amount, price);
+		ss.getAllStocks(id);
 		return null;
 	}
 

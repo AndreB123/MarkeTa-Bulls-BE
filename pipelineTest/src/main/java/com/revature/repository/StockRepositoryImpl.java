@@ -38,7 +38,7 @@ public class StockRepositoryImpl implements StockRepository {
 	}
 
 	@Override
-	public List<Stock> getAllStocks(int id, String symbol, int amount, double price) {
+	public List<Stock> getAllStocks(int id) {
 		List<Stock> stock = new ArrayList<>();
 		Session s = null;
 		Transaction tx = null;

@@ -10,7 +10,7 @@ public interface UserService {
 	//User getAllUsers(HttpServletRequest req, HttpServletResponse resp);
 	//void newUser(String username, String password);
 
-	void newUser(String username, String password);
+	void newUser(String username, String password, double balance);
 
 	User getAllUsers(String username, String password);
 }
