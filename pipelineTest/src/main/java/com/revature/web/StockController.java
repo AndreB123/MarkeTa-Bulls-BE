@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.revature.model.Stock;
 
 public interface StockController {
-	public List<Stock> getAllStocks(int id, String symbol, int amount, double price);
+	public List<Stock> getAllStocks(int id);
 
 	public Stock updateStock(int amount);
 
