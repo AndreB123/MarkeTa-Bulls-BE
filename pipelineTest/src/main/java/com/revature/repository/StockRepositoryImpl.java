@@ -87,7 +87,7 @@ public class StockRepositoryImpl implements StockRepository {
 
 	@Override
 	public Stock insertStock(int id, String symbol, int amount, double price) {
-		Stock x = null;
+		Stock x = new Stock(1, price, symbol,amount, id);
 		Session s = null;
 		Transaction tx = null;
 
@@ -95,7 +95,7 @@ public class StockRepositoryImpl implements StockRepository {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
 
-			x = (Stock) s.createNativeQuery("INSERT INTO stocktable values ("+id+",'"+symbol+"',"+amount+","+ price+")", Stock.class).getResultList();
+			s.save(x);
 
 			tx.commit();
 		} catch (HibernateException e) {
