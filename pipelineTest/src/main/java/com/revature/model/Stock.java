@@ -19,11 +19,9 @@ public class Stock {
 	private int id;
 	@Column(name="purchaseprice")
 	private double purchaseprice;
-
 	@Column(name="stocksym")
-
 	private String symbol;
-	@Column(name="amount")
+	@Column(name="ammount")
 	private int amount;
 	public Stock() {
 		super();

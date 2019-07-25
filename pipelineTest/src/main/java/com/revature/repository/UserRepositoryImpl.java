@@ -89,7 +89,8 @@ public class UserRepositoryImpl implements UserRepository {
 	public void newUser(String username, String password, double balance) {
 		Session s = null;
 		Transaction tx = null;
-		User u = new User (username, password, balance);
+
+		User u = new User(username, password, balance);
 
 		try {
 			s = SessionFactory.getSession();

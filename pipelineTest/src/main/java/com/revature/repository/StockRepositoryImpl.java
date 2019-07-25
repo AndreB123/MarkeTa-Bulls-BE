@@ -48,7 +48,7 @@ public class StockRepositoryImpl implements StockRepository {
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			stock = s.createNativeQuery("SELECT * FROM \"StockProj\".portfolio left join \"StockProj\".stocktable ON portId=portfolioId", Stock.class).getResultList();
+			stock = s.createNativeQuery("SELECT * FROM \"StockProj\".portfolio left join \"StockProj\".stocktable ON portId=portfolioId where portId=" + id, Stock.class).getResultList();
 
 			tx.commit();
 		} catch (HibernateException e) {
@@ -94,6 +94,7 @@ public class StockRepositoryImpl implements StockRepository {
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
+
 			x = (Stock) s.createNativeQuery("INSERT INTO stocktable values ("+id+",'"+symbol+"',"+amount+","+ price+")", Stock.class).getResultList();
 
 			tx.commit();
@@ -115,8 +116,7 @@ public class StockRepositoryImpl implements StockRepository {
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			x = (Stock) s.createNativeQuery("DELETE FROM stocktable WHERE stockID="+id, Stock.class).getResultList();
-
+			x = (Stock) s.createNativeQuery("DELETE FROM stocktable WHERE stockID=" + id, Stock.class).getResultList();
 			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();

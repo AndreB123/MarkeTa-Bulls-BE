@@ -11,7 +11,7 @@ public interface StockService {
 
 	// List<Stock> getAllStocks(int portfolioId);
 
-	
+
 	// Stock getStockById(int id);
 
 	public Stock insertStock(int id, String symbol, int amount, double price);

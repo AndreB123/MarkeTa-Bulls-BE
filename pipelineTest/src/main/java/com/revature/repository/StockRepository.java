@@ -16,7 +16,9 @@ public interface StockRepository {
 	public Stock updateStock(int amount);
 	public Stock insertStock(int id, String symbol, int amount, double price);
 	public Stock removeStock(int id);
-	List<Stock> getAllStocks(int id);
-	
+
+
+	public List<Stock> getAllStocks(int id);
+
 
 }
