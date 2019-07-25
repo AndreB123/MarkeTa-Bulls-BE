@@ -14,7 +14,7 @@ public interface StockService {
 
 	// Stock getStockById(int id);
 
-	public Stock insertStock(int id, String symbol, int amount, double price);
+	//public Stock insertStock(int id, String symbol, int amount, double price);
 
 	// Stock getStockById(HttpServletRequest req, HttpServletResponse resp);
 	public Stock getStockById(int id);
@@ -24,5 +24,7 @@ public interface StockService {
 	public Stock removeStock(int id);
 
 	List<Stock> getAllStocks(int id);
+
+	Stock insertStock(double purchaseprice, String symbol, int amount, int portid);
 
 }

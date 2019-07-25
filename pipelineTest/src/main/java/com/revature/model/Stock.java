@@ -21,18 +21,21 @@ public class Stock {
 	private double purchaseprice;
 	@Column(name="stocksym")
 	private String symbol;
-	@Column(name="ammount")
+	@Column(name="amount")	
 	private int amount;
+	@Column(name="portId")
+	private int portid;
 	public Stock() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Stock(int id, double purchaseprice, String symbol, int amount) {
+	public Stock(int id, double purchaseprice, String symbol, int amount, int portid) {
 		super();
 		this.id = id;
 		this.purchaseprice = purchaseprice;
 		this.symbol = symbol;
 		this.amount = amount;
+		this.portid = portid;
 	}
 	public int getId() {
 		return id;
@@ -58,12 +61,19 @@ public class Stock {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+	public int getPortid() {
+		return portid;
+	}
+	public void setPortid(int portid) {
+		this.portid = portid;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + amount;
 		result = prime * result + id;
+		result = prime * result + portid;
 		long temp;
 		temp = Double.doubleToLongBits(purchaseprice);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -83,6 +93,8 @@ public class Stock {
 			return false;
 		if (id != other.id)
 			return false;
+		if (portid != other.portid)
+			return false;
 		if (Double.doubleToLongBits(purchaseprice) != Double.doubleToLongBits(other.purchaseprice))
 			return false;
 		if (symbol == null) {
@@ -95,8 +107,8 @@ public class Stock {
 	@Override
 	public String toString() {
 		return "Stock [id=" + id + ", purchaseprice=" + purchaseprice + ", symbol=" + symbol + ", amount=" + amount
-				+ "]";
+				+ ", portid=" + portid + "]";
 	}
 	
 }
-	
+		

@@ -30,15 +30,15 @@ public class UserServiceImpl implements UserService{
 		return ur2.getUserByUsername(username);
 	}
 	
-	public User isValidUser(String Username, String password) {
+	public User isValidUser(String username, String password) {
 
-		System.out.println(Username);
+		System.out.println(username);
 		System.out.println(password);
 		
-		if(Username != null && !Username.equals("") && password != null && !password.equals("")) {
-			if(ur2.getUserByUsername(Username) != null && password.equals(ur2.getUserByUsername(Username).getPassword())) {
+		if(username != null && !username.equals("") && password != null && !password.equals("")) {
+			if(ur2.getUserByUsername(username) != null && password.equals(ur2.getUserByUsername(username).getPassword())) {
 				
-				return ur2.getUserByUsername(Username);
+				return ur2.getUserByUsername(username);
 			}
 		}
 		return null;

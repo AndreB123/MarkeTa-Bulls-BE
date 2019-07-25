@@ -61,8 +61,8 @@ public class StockControllerImpl implements StockController {
 	@Override
 	@RequestMapping(value="/insertStock", method = RequestMethod.POST)
 	@CrossOrigin(origins = "http://localhost:4200")
-	public Stock insertStock(@RequestParam(name="portId")int id, @RequestParam(name="symbol") String symbol, @RequestParam(name="amount") int amount, @RequestParam(name="price") double price) {
-		ss.insertStock(id,symbol,amount,price);
+	public Stock insertStock(@RequestParam(name="purchaseprice")double price,@RequestParam(name="symbol")String symbol,@RequestParam(name="amount") int amount, @RequestParam(name="portId")int id) {
+		ss.insertStock(price, symbol,amount,id);
 		return null;
 	}
 

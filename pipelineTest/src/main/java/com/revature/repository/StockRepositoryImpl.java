@@ -48,7 +48,10 @@ public class StockRepositoryImpl implements StockRepository {
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			stock = s.createNativeQuery("SELECT * FROM \"StockProj\".portfolio left join \"StockProj\".stocktable ON portId=portfolioId where portId=" + id, Stock.class).getResultList();
+			stock = s.createNativeQuery(
+					"SELECT * FROM \"StockProj\".portfolio left join \"StockProj\".stocktable ON portId=portfolioId where portId="
+							+ id,
+					Stock.class).getResultList();
 
 			tx.commit();
 		} catch (HibernateException e) {
@@ -72,7 +75,8 @@ public class StockRepositoryImpl implements StockRepository {
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			x = (Stock) s.createNativeQuery("UPDATE stocktable set amount= "+ amount + " where portId=portfolioId", Stock.class).getResultList();
+			x = (Stock) s.createNativeQuery("UPDATE stocktable set amount= " + amount + " where portId=portfolioId",
+					Stock.class).getResultList();
 
 			tx.commit();
 		} catch (HibernateException e) {
@@ -86,18 +90,18 @@ public class StockRepositoryImpl implements StockRepository {
 	}
 
 	@Override
-	public Stock insertStock(int id, String symbol, int amount, double price) {
+	public Stock insertStock(double purchaseprice, String symbol, int amount, int portid) {
 		Stock x = null;
 		Session s = null;
 		Transaction tx = null;
+		Stock xx= new Stock(1, purchaseprice, symbol, amount, portid); 
 
 		try {
 			s = SessionFactory.getSession();
-			tx = s.beginTransaction();
-
-			x = (Stock) s.createNativeQuery("INSERT INTO stocktable values ("+id+",'"+symbol+"',"+amount+","+ price+")", Stock.class).getResultList();
-
+			tx = s.beginTransaction();                                                           
+			s.save(xx);
 			tx.commit();
+			
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			tx.rollback();
@@ -126,6 +130,6 @@ public class StockRepositoryImpl implements StockRepository {
 			s.close();
 		}
 		return x;
-	}	
+	}
 
 }

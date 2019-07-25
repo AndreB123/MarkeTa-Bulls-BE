@@ -42,8 +42,8 @@ public class StockServiceImpl implements StockService {
 	}
 
 	@Override
-	public Stock insertStock(int id, String symbol, int amount, double price) {
-		return sr2.insertStock(id, symbol, amount, price);
+	public Stock insertStock(double purchaseprice, String symbol, int amount, int portid) {
+		return sr2.insertStock( purchaseprice, symbol, amount, portid);
 	}
 
 	@Override

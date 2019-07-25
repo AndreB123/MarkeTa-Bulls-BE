@@ -24,11 +24,11 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 	@Override
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	@CrossOrigin(origins = "http://localhost:4200")
-	public String isValidUser(@RequestParam(name="username") String Username, @RequestParam(name="password") String password) {
+	public String isValidUser(@RequestParam(name="username") String username, @RequestParam(name="password") String password) {
 		System.out.println("controller login method");
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			return mapper.writeValueAsString(us.isValidUser(Username, password));
+			return mapper.writeValueAsString(us.isValidUser(username, password));
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}
