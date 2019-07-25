@@ -84,5 +84,14 @@ public class PortfolioControllerImpl implements PortfolioController {
 		ps.insertPortfolio(username, portname);
 		return null;
 	}
+
+	@Override
+	@RequestMapping(value = "/sellPortfolio", method = RequestMethod.POST)
+	@CrossOrigin(origins = "http://localhost:4200")
+	public void SellPortfolio(@RequestParam(name = "portId")int id) {
+		System.out.println(id);
+		ps.SellPortfolio(id);
+		return;
+	}
 	
 }

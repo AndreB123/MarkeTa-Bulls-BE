@@ -55,4 +55,10 @@ public class UserServiceImpl implements UserService{
 		return ur2.getAllUsers(username, password);
 		
 	}
+
+	@Override
+	public void updateBalance(String username, double balance) {
+		// TODO Auto-generated method stub
+		
+	}
 }

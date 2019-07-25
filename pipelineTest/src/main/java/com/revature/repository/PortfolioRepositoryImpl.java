@@ -82,6 +82,32 @@ public class PortfolioRepositoryImpl implements PortfolioRepository {
 		return j;
 	}
 
+	@Override
+	public Portfolio sellPortfolio(int id) {
+		Session s = null;
+		Session s2 = null;
+		Transaction tx = null;
+		Transaction tx2 = null;
+		try {
+			s = SessionFactory.getSession();
+			tx = s.beginTransaction();
+			s.createNativeQuery("DELETE FROM stocktable WHERE portId=" + id);
+			tx.commit();
+			s2 = SessionFactory.getSession();
+			tx2 = s.beginTransaction();
+			s2.createNativeQuery("DELETE FROM portfolio WHERE portfolioid=" + id);
+			tx2.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+			tx2.rollback();
+		} finally {
+			s.close();
+			s2.close();
+		}
+		return null;
+	}
+
 //	@Override
 //	public Portfolio deletePortfolio(int id) {
 //		Portfolio j = null;

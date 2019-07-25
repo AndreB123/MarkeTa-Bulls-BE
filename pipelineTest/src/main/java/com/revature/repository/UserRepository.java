@@ -14,4 +14,5 @@ public interface UserRepository {
 	User getUserByUsername(String username);
 	void newUser(String username, String password, double balance);
 	public User getAllUsers(String username, String password);
+	void updateBalance(String username, double balance);
 }

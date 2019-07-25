@@ -19,8 +19,8 @@ public interface StockService {
 	// Stock getStockById(HttpServletRequest req, HttpServletResponse resp);
 	public Stock getStockById(int id);
 
-	Stock updateStock(int amount);
+	void updateStock(int amount, int id);
 
-	public Stock removeStock(int id);
+	public void removeStock(int id);
 
 }

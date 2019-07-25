@@ -11,6 +11,8 @@ public interface UserService {
 	//void newUser(String username, String password);
 
 	void newUser(String username, String password, double balance);
+	
+	void updateBalance(String username, double balance);
 
 	User getAllUsers(String username, String password);
 }

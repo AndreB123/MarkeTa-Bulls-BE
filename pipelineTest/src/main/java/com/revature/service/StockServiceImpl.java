@@ -37,8 +37,9 @@ public class StockServiceImpl implements StockService {
 	}
 
 	@Override
-	public Stock updateStock(int amount) {
-		return sr2.updateStock(amount);
+	public void updateStock(int amount, int id) {
+		sr2.updateStock(amount, id);
+		return;
 	}
 
 	@Override
@@ -47,8 +48,9 @@ public class StockServiceImpl implements StockService {
 	}
 
 	@Override
-	public Stock removeStock(int id) {
-		return sr2.removeStock(id);
+	public void removeStock(int id) {
+		sr2.removeStock(id);
+		return;
 	}
 
 }

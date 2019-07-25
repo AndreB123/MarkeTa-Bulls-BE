@@ -38,4 +38,10 @@ public class PortfolioServiceImpl implements PortfolioService {
 		pr2.insertPortfolio(username, portname);
 		return;
 	}
+
+	@Override
+	public void SellPortfolio(int id) {
+		pr2.sellPortfolio(id);
+		return;
+	}
 }

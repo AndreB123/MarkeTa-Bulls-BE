@@ -13,9 +13,9 @@ import com.revature.model.Stock;
 public interface StockRepository {
 
 	public Stock getStockById(int id);		
-	public Stock updateStock(int amount);
+	public void updateStock(int amount, int id);
 	public Stock insertStock(int id, String symbol, int amount, double price);
-	public Stock removeStock(int id);
+	public void removeStock(int id);
 
 	public List<Stock> getAllStocks(int id);
 

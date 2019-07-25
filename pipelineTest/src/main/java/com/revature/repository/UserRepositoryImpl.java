@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
+import com.revature.model.Stock;
 import com.revature.model.User;
 import com.revature.util.SessionFactory;
 
@@ -101,6 +102,42 @@ public class UserRepositoryImpl implements UserRepository {
 			s.close();
 		}
 
+		return;
+	}
+
+	@Override
+	public void updateBalance(String username, double balance) {
+		User x = null;
+		Session s = null;
+		Transaction tx = null;
+		Session s2 = null;
+		Transaction tx2 = null;
+
+		try {
+			s = SessionFactory.getSession();
+			tx = s.beginTransaction();
+			x = s.get(User.class, username);
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+
+		} finally {
+			s.close();
+		}
+		double remain = x.getBalance() + balance;
+		try {
+			s2 = SessionFactory.getSession();
+			tx2 = s2.beginTransaction();
+			x.setBalance(remain);
+			s2.update(x);
+			tx2.commit();
+		}catch(HibernateException e) {
+			e.printStackTrace();
+			tx2.rollback();
+		}finally {
+			s2.close();
+		}
 		return;
 	}
 	
