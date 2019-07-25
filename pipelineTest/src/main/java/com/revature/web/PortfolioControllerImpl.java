@@ -29,18 +29,26 @@ public class PortfolioControllerImpl implements PortfolioController {
 	}
 
 	@Override
-	@RequestMapping(value = "/Portfolios", method = RequestMethod.GET)
+	@RequestMapping(value="/Portfolios", method=RequestMethod.GET)
 	@CrossOrigin(origins = "http://localhost:4200")
-	public String getAllPortfolios(@RequestParam(name = "Username") String username) {
+	public String getAllPortfolios(@RequestParam(name="Username") String username) {
 		System.out.println(username);
+		String Re = "{ \"portfolios\": [";
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			return mapper.writeValueAsString(ps.getAllPortfolios(username));
-		} catch (Exception ex) {
+			List<Portfolio> li = ps.getAllPortfolios(username);
+			for(int i = 0; i < li.size(); i++) {
+				Re += mapper.writeValueAsString(li.get(i));
+				if(i != li.size()-1)
+					Re += ",";
+			}
+			Re += "]}";
+			System.out.println(Re);
+			return Re;
+		}catch (Exception ex){
 			ex.printStackTrace();
 		}
-		return "Portfolio Request Failed";
-
+		return null;
 	}
 
 	@Override

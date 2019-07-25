@@ -11,4 +11,6 @@ public interface PortfolioController {
 	String getAllPortfolios(String username);
 	public Portfolio getPortfolioById(int id);
 	public Portfolio insertPortfolio(int id);
+
+
 }
