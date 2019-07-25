@@ -86,14 +86,15 @@ public class UserRepositoryImpl implements UserRepository {
 		return u;
 	}
 
-	public void newUser(String username, String password) {
+	public void newUser(String username, String password, double balance) {
 		Session s = null;
 		Transaction tx = null;
+		User u = new User (username, password, balance);
 
 		try {
 			s = SessionFactory.getSession();
 			tx = s.beginTransaction();
-			s.save(username, password);
+			s.save(u);
 			tx.commit();
 		} catch (HibernateException ex) {
 			ex.printStackTrace();
