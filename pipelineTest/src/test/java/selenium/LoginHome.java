@@ -7,7 +7,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginHome {
-	public String title = "MarkeTa-Bulls Login";
+	public String title = "MarkeTa-Bulls";
 	
 	@FindBy(how= How.NAME, using ="username")	
 	public WebElement username;	
