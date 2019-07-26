@@ -24,11 +24,13 @@ public class LoginHome {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void logInToMercuryTours(String username, String password) {
+	public void login(String username, String password) {
 		this.username.sendKeys(username); //simulates typing
 		this.password.sendKeys(password);
 		this.login.click();
 		
 	}
+
+	
 
 }
