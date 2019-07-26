@@ -30,7 +30,7 @@ public class PortfolioControllerImpl implements PortfolioController {
 	@Override
 	@RequestMapping(value = "/Portfolios", method = RequestMethod.GET)
 	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
-	public String getAllPortfolios(@RequestParam(name = "Username") String username) {
+	public String getAllPortfolios(@RequestParam(name = "username") String username) {
 		System.out.println(username);
 		ObjectMapper mapper = new ObjectMapper();
 		String Re = "{\"portfolios\": [";
@@ -78,7 +78,7 @@ public class PortfolioControllerImpl implements PortfolioController {
     @Override
 	@RequestMapping(value = "/insertPortfolio", method = RequestMethod.POST)
 	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
-	public Portfolio insertPortfolio(@RequestParam(name = "Username") String username, @RequestParam(name = "name") String portname) {
+	public Portfolio insertPortfolio(@RequestParam(name = "username") String username, @RequestParam(name = "name") String portname) {
 		System.out.println(portname);
 		System.out.println(username);
 		ps.insertPortfolio(username, portname);
