@@ -8,6 +8,7 @@ public interface PortfolioController {
 	public Portfolio getPortfolioById(int id);	
 	public Portfolio insertPortfolio(String username, String portname);
 	String getAllPortfolios(String username);
+	public void SellPortfolio(int id);
 
 
 }

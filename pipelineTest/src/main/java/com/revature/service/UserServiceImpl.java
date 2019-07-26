@@ -30,15 +30,22 @@ public class UserServiceImpl implements UserService{
 		return ur2.getUserByUsername(username);
 	}
 	
-	public User isValidUser(String Username, String password) {
+	public User isValidUser(String username, String password) {
 
-		System.out.println(Username);
+		System.out.println(username);
 		System.out.println(password);
 		
+<<<<<<< HEAD
 		if(Username != null && !Username.equals("") && password != null && !password.equals("")) {
 			if(ur2.getUserByUsername(Username) != null && password.equals(ur2.getUserByUsername(Username).getPassword())) {
 				System.out.println(Username);
 				return ur2.getUserByUsername(Username);
+=======
+		if(username != null && !username.equals("") && password != null && !password.equals("")) {
+			if(ur2.getUserByUsername(username) != null && password.equals(ur2.getUserByUsername(username).getPassword())) {
+				
+				return ur2.getUserByUsername(username);
+>>>>>>> 4be4cfa7c993994aca06ac0f73df2bad88084d92
 			}
 		}
 		return null;
@@ -53,6 +60,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User getAllUsers(String username, String password) {		
 		return ur2.getAllUsers(username, password);
+		
+	}
+
+	@Override
+	public void updateBalance(String username, double balance) {
+		// TODO Auto-generated method stub
 		
 	}
 }

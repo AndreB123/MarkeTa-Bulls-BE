@@ -18,23 +18,23 @@ import javax.persistence.Table;
 public class Stock {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="stock_stockid_seq")
-	@SequenceGenerator(name="stock_stockid_seq", sequenceName="\"StockProj\".stock_stockid_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="stocktable_stockid_seq")
+	@SequenceGenerator(name="stocktable_stockid_seq", sequenceName="\"StockProj\".stocktable_stockid_seq", allocationSize=1)
 	@Column(name="stockid")
 	private int id;
 	@Column(name="purchaseprice")
 	private double purchaseprice;
 	@Column(name="stocksym")
 	private String symbol;
-	@Column(name="amount")
+	@Column(name="amount")	
 	private int amount;
 	@Column(name="portId")
 	private int portid;
-	
 	public Stock() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public Stock(int id, double purchaseprice, String symbol, int amount, int portid) {
 		super();
@@ -42,6 +42,37 @@ public class Stock {
 		this.purchaseprice = purchaseprice;
 		this.symbol = symbol;
 		this.amount = amount;
+		this.portid = portid;
+	}
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public double getPurchaseprice() {
+		return purchaseprice;
+	}
+	public void setPurchaseprice(double purchaseprice) {
+		this.purchaseprice = purchaseprice;
+	}
+	public String getSymbol() {
+		return symbol;
+	}
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public int getPortid() {
+		return portid;
+	}
+	public void setPortid(int portid) {
 		this.portid = portid;
 	}
 
@@ -89,46 +120,5 @@ public class Stock {
 		return "Stock [id=" + id + ", purchaseprice=" + purchaseprice + ", symbol=" + symbol + ", amount=" + amount
 				+ ", portid=" + portid + "]";
 	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public double getPurchaseprice() {
-		return purchaseprice;
-	}
-
-	public void setPurchaseprice(double purchaseprice) {
-		this.purchaseprice = purchaseprice;
-	}
-
-	public String getSymbol() {
-		return symbol;
-	}
-
-	public void setSymbol(String symbol) {
-		this.symbol = symbol;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-
-	public int getPortid() {
-		return portid;
-	}
-
-	public void setPortid(int portid) {
-		this.portid = portid;
-	}
-
 }
-	
+			
