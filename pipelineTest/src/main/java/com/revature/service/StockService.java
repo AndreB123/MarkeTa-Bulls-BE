@@ -7,11 +7,7 @@ import com.revature.model.Stock;
 public interface StockService {
 
 
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 4be4cfa7c993994aca06ac0f73df2bad88084d92
 	// Stock getStockById(int id);
 
 	//public Stock insertStock(int id, String symbol, int amount, double price);
