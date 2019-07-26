@@ -32,7 +32,7 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}
-		return "Failed";
+		return "Failed test";
 	}
 
 	@Override

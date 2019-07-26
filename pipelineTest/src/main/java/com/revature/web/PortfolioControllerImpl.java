@@ -29,7 +29,7 @@ public class PortfolioControllerImpl implements PortfolioController {
 
 	@Override
 	@RequestMapping(value = "/Portfolios", method = RequestMethod.GET)
-	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public String getAllPortfolios(@RequestParam(name = "Username") String username) {
 		System.out.println(username);
 		ObjectMapper mapper = new ObjectMapper();
