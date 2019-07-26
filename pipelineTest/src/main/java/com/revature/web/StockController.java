@@ -9,7 +9,8 @@ import com.revature.model.Stock;
 
 public interface StockController {
 	public List<Stock> getAllStocks(int id);
-	public Stock insertStock(int id, String symbol, int amount, double price);
+
+	public Stock insertStock(String price, String symbol, String amount, String id);
 	String getStockById(int id);
 	public void updateStock(String amount, String stockId, String user, String balance);
 	public Stock removeStock(int id);

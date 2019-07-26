@@ -11,10 +11,10 @@ public interface StockService {
 
 	// List<Stock> getAllStocks(int portfolioId);
 
-	List<Stock> getAllStocks(int id);
+
 	// Stock getStockById(int id);
 
-	public Stock insertStock(int id, String symbol, int amount, double price);
+	//public Stock insertStock(int id, String symbol, int amount, double price);
 
 	// Stock getStockById(HttpServletRequest req, HttpServletResponse resp);
 	public Stock getStockById(int id);
@@ -22,5 +22,9 @@ public interface StockService {
 	void updateStock(int amount, int id);
 
 	public void removeStock(int id);
+
+	List<Stock> getAllStocks(int id);
+
+	Stock insertStock(double purchaseprice, String symbol, int amount, int portid);
 
 }

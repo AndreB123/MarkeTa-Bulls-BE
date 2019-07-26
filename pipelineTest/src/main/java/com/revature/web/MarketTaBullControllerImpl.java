@@ -24,11 +24,11 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 	@Override
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	@CrossOrigin(origins = "http://localhost:4200")
-	public String isValidUser(@RequestParam(name="Username") String Username, @RequestParam(name="password") String password) {
+	public String isValidUser(@RequestParam(name="username") String username, @RequestParam(name="password") String password) {
 		System.out.println("controller login method");
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			return mapper.writeValueAsString(us.isValidUser(Username, password));
+			return mapper.writeValueAsString(us.isValidUser(username, password));
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}
@@ -39,6 +39,7 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 	@RequestMapping(value="/CreateUser", method=RequestMethod.POST)
 	@CrossOrigin(origins = "http://localhost:4200")
 	public void createUser(@RequestParam(name="Username") String username, @RequestParam(name="password") String password, @RequestParam(name="balance") String balance) {
+
 		System.out.println("controller Create User method");
 		us.newUser(username, password, Double.parseDouble(balance));
 		return;
@@ -47,7 +48,7 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 	@Override
 	@RequestMapping(value="/getAllUsers", method=RequestMethod.GET)
 	@CrossOrigin(origins = "http://localhost:4200")
-	public void getAllUsers(@RequestParam(name="Username") String username, @RequestParam(name="password") String password) {
+	public void getAllUsers(@RequestParam(name="username") String username, @RequestParam(name="password") String password) {
 		System.out.println("controller get all users method");
 		us.getAllUsers(username, password);
 		return;		

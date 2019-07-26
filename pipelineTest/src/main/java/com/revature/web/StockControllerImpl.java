@@ -15,7 +15,7 @@ import com.revature.repository.UserRepositoryImpl;
 import com.revature.service.StockService;
 
 @RestController
-@RequestMapping(path="/MarkeTa-Bulls")
+@RequestMapping(path = "/MarkeTa-Bulls")
 public class StockControllerImpl implements StockController {
 
 	private StockService ss;
@@ -27,7 +27,8 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value = "/stockpage", method = RequestMethod.GET)
-	public List<Stock> getAllStocks(@RequestParam(name="portId")int id) {
+	@CrossOrigin(origins = "http://localhost:4200")
+	public List<Stock> getAllStocks(@RequestParam(name = "portId") int id) {
 		System.out.println("stock controller method");
 		ss.getAllStocks(id);
 		return null;
@@ -35,20 +36,20 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value = "/stock", method = RequestMethod.GET)
-	@CrossOrigin(origins="http://localhost:4200")
-	public String getStockById(@RequestParam(name="stockId") int id) {
+	@CrossOrigin(origins = "http://localhost:4200")
+	public String getStockById(@RequestParam(name = "stockId") int id) {
 		System.out.println("stock controller method");
-		ObjectMapper mapper= new ObjectMapper(); 
+		ObjectMapper mapper = new ObjectMapper();
 		try {
 			return mapper.writeValueAsString(ss.getStockById(id));
-		}catch (Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		return "Stock Request Failed";
 	}
 
 	@Override
-	@RequestMapping(value="/updateStock", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateStock", method = RequestMethod.GET)
 	@CrossOrigin(origins = "http://localhost:4200")
 	public void updateStock(@RequestParam(name="sellAmount")String amount, @RequestParam(name="stockId")String stockId, @RequestParam(name="username")String user, @RequestParam(name="overallBalance") String balance) {
 		System.out.println(amount);
@@ -65,19 +66,18 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value="/insertStock", method = RequestMethod.POST)
-	public Stock insertStock(@RequestParam(name="portid")int id, @RequestParam(name="symbol")String symbol, @RequestParam(name="amount") int amount, @RequestParam(name="price")double price) {
-		ss.insertStock(id, symbol, amount, price);
+	@CrossOrigin(origins = "http://localhost:4200")
+	public Stock insertStock(@RequestParam(name="purchaseprice")String price,@RequestParam(name="symbol")String symbol,@RequestParam(name="amount")String amount, @RequestParam(name="portId")String id) {
+		ss.insertStock(Double.parseDouble(price), symbol, Integer.parseInt(amount), Integer.parseInt(id));
 		return null;
 	}
 
 	@Override
-	@RequestMapping(value="/removeStock", method =RequestMethod.POST)
+	@RequestMapping(value = "/removeStock", method = RequestMethod.POST)
 	@CrossOrigin(origins = "http://localhost:4200")
-	public Stock removeStock(@RequestParam(name="portId") int id) {
+	public Stock removeStock(@RequestParam(name = "portId") int id) {
 		ss.removeStock(id);
 		return null;
 	}
 
-
 }
-
