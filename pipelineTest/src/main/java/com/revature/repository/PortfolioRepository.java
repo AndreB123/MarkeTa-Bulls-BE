@@ -9,7 +9,7 @@ import com.revature.model.Portfolio;
 
 /*
  * The PortfolioRepository listing the methods that will be implemented in the 
- * PortfolioRepository will implement. 
+ * PortfolioRepositoryImpl. 
  */
 
 @Repository("pr")

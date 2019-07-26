@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.model.Stock;
 
+/*
+ * The StockService listing the methods that will be implemented in the 
+ * StockServiceImpl. 
+ */
 public interface StockService {
 
 	public Stock getStockById(int id);

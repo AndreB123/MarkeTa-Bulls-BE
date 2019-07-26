@@ -2,6 +2,7 @@ package com.revature.repository;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -11,6 +12,13 @@ import org.springframework.stereotype.Repository;
 
 import com.revature.model.Stock;
 import com.revature.util.SessionFactory;
+
+/*
+ * Implemented methods from declared methods within StockRepository. This is where all our 
+ * Stock related SQL statements are located. We have SQL statments for getting
+ * all stock, getting stock by ID, *inserting, updating and removing stocks. . 
+ *
+ */
 
 @Repository("sr2")
 public class StockRepositoryImpl implements StockRepository {

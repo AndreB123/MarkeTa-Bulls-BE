@@ -1,6 +1,8 @@
 package com.revature.web;
 
-
+/*
+ * All the methods that will be used within the MarkeTaBullControllerImpl.
+ */
 
 public interface MarketTaBullController {
 	public String isValidUser(String username, String Password);	

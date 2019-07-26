@@ -3,6 +3,11 @@ package com.revature.util;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 
+/*
+ * This is where we confugured all of our environment variables in order to be able to interact 
+ * with the database and store user information regarding their credentials, portfolio, and stock 
+ * they currently have. 
+ */
 public class SessionFactory {
 	private static org.hibernate.SessionFactory sessionFactory;
 	

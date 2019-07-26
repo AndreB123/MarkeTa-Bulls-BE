@@ -16,6 +16,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.Stock;
 import com.revature.service.StockService;
 
+/*
+ * Here we created the endpoints that we would like our application to be able to hit when running. 
+ * Each method has different parameters that will be requested and returned back as JSON. 
+ */
 @RestController
 @RequestMapping(path = "/MarkeTa-Bulls")
 public class StockControllerImpl implements StockController {

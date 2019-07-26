@@ -8,6 +8,7 @@
           <include name="confirmHomePage"/>
           <include name="teardown"/>
           <include name="login"/>
+          <include name="log"/>
           <include name="setup"/>
         </methods>
       </class> <!-- selenium.LoginTest -->

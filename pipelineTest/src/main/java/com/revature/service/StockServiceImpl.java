@@ -12,6 +12,11 @@ import org.springframework.stereotype.Service;
 import com.revature.model.Stock;
 import com.revature.repository.StockRepository;
 
+/*
+ * Implemented methods from declared methods within StockService. This is where we wired our 
+ * StockService bean to each method prveiously declared, to be used within the StockController. 
+ *
+ */
 @Service("ss")
 public class StockServiceImpl implements StockService {
 

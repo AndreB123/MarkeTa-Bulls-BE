@@ -14,6 +14,13 @@ import org.springframework.stereotype.Repository;
 import com.revature.model.User;
 import com.revature.util.SessionFactory;
 
+
+/*
+ * Implemented methods from declared methods within UserRepository. This is where all our 
+ * User related SQL statements are located. We have SQL statments for getting
+ * all users getting users by ID, and inserting new users. . 
+ *
+ */
 @Repository("ur2")
 public class UserRepositoryImpl implements UserRepository {
 

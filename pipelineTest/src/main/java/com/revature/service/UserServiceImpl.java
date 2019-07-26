@@ -13,6 +13,11 @@ import com.revature.model.User;
 import com.revature.repository.UserRepository;
 import com.revature.repository.UserRepositoryImpl;
 
+/*
+ * Implemented methods from declared methods within UserService. This is where we wired our 
+ * UserService bean to each method prveiously declared, to be used within the MarkeTaBullController. 
+ *
+ */
 @Service("us")
 public class UserServiceImpl implements UserService{
 

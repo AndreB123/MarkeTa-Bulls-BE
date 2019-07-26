@@ -13,7 +13,10 @@ import com.revature.model.Stock;
 import com.revature.util.SessionFactory;
 
 /*
- * Implemented methods from declared methods within PortfolioRepository. 
+ * Implemented methods from declared methods within PortfolioRepository. This is where all our 
+ * Portfolio related SQL statements are located. We have SQL statments for getting all portfolios,
+ * getting by ID, inserting, and updating. 
+ *
  */
 
 @Repository("pr2")

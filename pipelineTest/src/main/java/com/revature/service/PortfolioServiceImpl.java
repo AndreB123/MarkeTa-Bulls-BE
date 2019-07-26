@@ -9,6 +9,11 @@ import com.revature.model.Portfolio;
 import com.revature.repository.PortfolioRepository;
 import com.revature.repository.PortfolioRepositoryImpl;
 
+/*
+ * Implemented methods from declared methods within PortfolioService. This is where we wired our 
+ * PortfolioService bean to each method prveiously declared, to be used within the PortfolioController. 
+ *
+ */
 @Service("ps")
 public class PortfolioServiceImpl implements PortfolioService {
 

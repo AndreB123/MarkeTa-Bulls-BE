@@ -9,6 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/*
+ * This is being used to test log in. Other tests were failing(they are commented out in
+ * LoginTest class) so tried new approach.  
+ */
 public class Log {
 	
 	    public static void main(String[] args) throws InterruptedException, NoSuchElementException {
@@ -18,6 +22,7 @@ public class Log {
 	        String password = "password";
 
 	        WebDriver driver;
+	    	System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 	        driver = new ChromeDriver();
 	        driver.manage().window().maximize();
 

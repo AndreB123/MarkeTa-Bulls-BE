@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.model.Stock;
 
+
+/*
+ * All the methods that will be used within the StockControllerImpl.
+ */
 public interface StockController {
 	public List<Stock> getAllStocks(int id);
 

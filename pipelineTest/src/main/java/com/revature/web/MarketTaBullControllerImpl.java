@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.service.UserService;
 
+/*
+ * Here we created the endpoints that we would like our application to be able to hit when running. 
+ * Each method has different parameters that will be requested and returned back as JSON. 
+ */
 @RestController
 @RequestMapping(path="/MarkeTa-Bulls")
 public class MarketTaBullControllerImpl implements MarketTaBullController{

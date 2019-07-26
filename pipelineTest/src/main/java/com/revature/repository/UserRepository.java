@@ -1,13 +1,12 @@
 package com.revature.repository;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Repository;
 
 import com.revature.model.User;
+
+/*The UserRepository listing the methods that will be implemented in the 
+* UserRepositoryImpl. 
+*/
 
 @Repository("ur")
 public interface UserRepository {

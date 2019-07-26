@@ -2,6 +2,11 @@ package com.revature.service;
 
 import com.revature.model.User;
 
+/*
+ * The UserService listing the methods that will be implemented in the 
+ * UserServiceImpl. 
+ */
+
 public interface UserService {
 	
 	public User getUserByUsername(String username);

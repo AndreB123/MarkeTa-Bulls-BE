@@ -20,6 +20,10 @@ import com.revature.model.Stock;
 import com.revature.repository.StockRepositoryImpl;
 import com.revature.service.PortfolioService;
 
+/*
+ * Here we created the endpoints that we would like our application to be able to hit when running. 
+ * Each method has different parameters that will be requested and returned back as JSON. 
+ */
 @RestController
 @RequestMapping(path = "/MarkeTa-Bulls")
 public class PortfolioControllerImpl implements PortfolioController {
