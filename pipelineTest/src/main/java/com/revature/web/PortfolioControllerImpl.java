@@ -29,7 +29,7 @@ public class PortfolioControllerImpl implements PortfolioController {
 
 	@Override
 	@RequestMapping(value = "/Portfolios", method = RequestMethod.GET)
-	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com/")
+	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
 	public String getAllPortfolios(@RequestParam(name = "Username") String username) {
 		System.out.println(username);
 		ObjectMapper mapper = new ObjectMapper();
@@ -69,7 +69,7 @@ public class PortfolioControllerImpl implements PortfolioController {
 
 	@Override
 	@RequestMapping(value = "/APortfolio", method = RequestMethod.GET)
-	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com/")
+	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
 	public Portfolio getPortfolioById(@RequestParam(name ="portId") int id) {		
 		ps.getPortfolioById(id);
 		return null;
@@ -77,7 +77,7 @@ public class PortfolioControllerImpl implements PortfolioController {
 	}
     @Override
 	@RequestMapping(value = "/insertPortfolio", method = RequestMethod.POST)
-	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com/")
+	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
 	public Portfolio insertPortfolio(@RequestParam(name = "Username") String username, @RequestParam(name = "name") String portname) {
 		System.out.println(portname);
 		System.out.println(username);
@@ -87,7 +87,7 @@ public class PortfolioControllerImpl implements PortfolioController {
 
 	@Override
 	@RequestMapping(value = "/sellPortfolio", method = RequestMethod.POST)
-	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com/")
+	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
 	public void SellPortfolio(@RequestParam(name = "portId")int id) {
 		System.out.println(id);
 		ps.SellPortfolio(id);

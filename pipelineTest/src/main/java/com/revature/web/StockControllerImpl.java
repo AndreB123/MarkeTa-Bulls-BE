@@ -27,7 +27,7 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value = "/stockpage", method = RequestMethod.GET)
-	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com/")
+	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
 	public List<Stock> getAllStocks(@RequestParam(name = "portId") int id) {
 		System.out.println("stock controller method");
 		ss.getAllStocks(id);
@@ -36,7 +36,7 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value = "/stock", method = RequestMethod.GET)
-	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com/")
+	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
 	public String getStockById(@RequestParam(name = "stockId") int id) {
 		System.out.println("stock controller method");
 		ObjectMapper mapper = new ObjectMapper();
@@ -50,7 +50,7 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value = "/updateStock", method = RequestMethod.GET)
-	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com/")
+	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
 	public void updateStock(@RequestParam(name="sellAmount")String amount, @RequestParam(name="stockId")String stockId, @RequestParam(name="username")String user, @RequestParam(name="overallBalance") String balance) {
 		System.out.println(amount);
 		System.out.println(stockId);
@@ -66,7 +66,7 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value="/insertStock", method = RequestMethod.POST)
-	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com/")
+	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
 	public Stock insertStock(@RequestParam(name="purchaseprice")String price,@RequestParam(name="symbol")String symbol,@RequestParam(name="amount")String amount, @RequestParam(name="portId")String id) {
 		ss.insertStock(Double.parseDouble(price), symbol, Integer.parseInt(amount), Integer.parseInt(id));
 		return null;
@@ -74,7 +74,7 @@ public class StockControllerImpl implements StockController {
 
 	@Override
 	@RequestMapping(value = "/removeStock", method = RequestMethod.POST)
-	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com/")
+	@CrossOrigin(origins = "http://market-ta-bulls.s3-website-us-west-1.amazonaws.com")
 	public Stock removeStock(@RequestParam(name = "portId") int id) {
 		ss.removeStock(id);
 		return null;
