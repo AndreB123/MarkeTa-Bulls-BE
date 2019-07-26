@@ -28,8 +28,8 @@ public class MarketTaBullControllerImpl implements MarketTaBullController{
 		System.out.println("controller login method");
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			us.isValidUser(username, password);
-			return "{\"username\": \"jhagle\", \"password\":\"pass\", \"balance\":\"1000\"}";
+			//return mapper.writeValueAsString(us.isValidUser(username, password));
+			return "{\"username\":\"jhagle\",\"password\":\"pass\",\"balance\":10169.419999999998}";
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}
